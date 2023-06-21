@@ -7,7 +7,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class GuiFxClientTest
+public class GuiFxAppTest
     extends TestCase
 {
     /**
@@ -15,7 +15,7 @@ public class GuiFxClientTest
      *
      * @param testName name of the test case
      */
-    public GuiFxClientTest(String testName )
+    public GuiFxAppTest(String testName )
     {
         super( testName );
     }
@@ -25,7 +25,7 @@ public class GuiFxClientTest
      */
     public static Test suite()
     {
-        return new TestSuite( GuiFxClientTest.class );
+        return new TestSuite( GuiFxAppTest.class );
     }
 
     /**
