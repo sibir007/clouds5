@@ -1,11 +1,10 @@
 package io.github.sibir007.clouds5.client.core;
 
-public class ClientController extends Thread{
-    private CloudsClient cloudsClient;
-
-    public ClientController(){
-        super("ClientController");
-    }
-
+public interface ClientController {
+    void addCloud(Cloud cloud);
+    void editCloud(Cloud cloud);
+    void addAccount(Account account);
+    void removeAccount(Account account);
+    void editAccount(Account account);
 
 }

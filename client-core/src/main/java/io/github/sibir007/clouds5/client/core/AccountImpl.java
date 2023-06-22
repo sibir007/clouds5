@@ -4,7 +4,7 @@ import java.io.File;
 
 public class AccountImpl {
     private Cloud cloud;
-    private String name;
+    private String userName;
     private String password;
     private String email;
 

@@ -1,16 +1,16 @@
 package io.github.sibir007.clouds5.client.gui.fx;
 
 import io.github.sibir007.clouds5.client.core.AccountImpl;
-import io.github.sibir007.clouds5.client.core.ClientController;
+import io.github.sibir007.clouds5.client.core.ClientControllerTask;
 import io.github.sibir007.clouds5.client.core.CloudImpl;
 import io.github.sibir007.clouds5.client.core.PostedCloudsClient;
 
 
 public class guiCloudsClient implements PostedCloudsClient {
 
-    private ClientController clientController;
+    private ClientControllerTask clientController;
     @Override
-    public void setClientController(ClientController clientController) {
+    public void setClientController(ClientControllerTask clientController) {
 
     }
 
