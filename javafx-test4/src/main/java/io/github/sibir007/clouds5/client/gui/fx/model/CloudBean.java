@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableIntegerValue;
 import javafx.beans.value.ObservableStringValue;
 import javafx.collections.ObservableSet;
+
 import java.util.HashSet;
 
 public class CloudBean implements Cloud {

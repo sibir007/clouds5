@@ -1,10 +1,10 @@
 package io.github.sibir007.clouds5.client.gui.fx;
 
-import io.github.sibir007.clouds5.client.core.AccountImpl;
-import io.github.sibir007.clouds5.client.core.ClientControllerTask;
-import io.github.sibir007.clouds5.client.core.CloudImpl;
-import io.github.sibir007.clouds5.client.core.PostedCloudsClient;
 
+import io.github.sibir007.clouds5.client.core.Account;
+import io.github.sibir007.clouds5.client.core.ClientControllerTask;
+import io.github.sibir007.clouds5.client.core.Cloud;
+import io.github.sibir007.clouds5.client.core.PostedCloudsClient;
 
 public class guiCloudsClient implements PostedCloudsClient {
 
@@ -15,22 +15,24 @@ public class guiCloudsClient implements PostedCloudsClient {
     }
 
     @Override
-    public void addCloud(CloudImpl cloud) {
+    public void addCloud(Cloud cloud) {
 
     }
 
     @Override
-    public void connectCLoud(CloudImpl cloud) {
+    public void connectCLoud(Cloud cloud) {
 
     }
 
     @Override
-    public void addAccount(AccountImpl account) {
+    public void addAccount(Cloud cloud, Account account) {
 
     }
 
-    @Override
-    public void autorizeAccount(AccountImpl account) {
+
+
+
+    public void authorizeAccount(Cloud cloud, Account account) {
 
     }
 

@@ -34,14 +34,7 @@
             <artifactId>log4j-core</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>io.github.sibir007.clouds5.client.gui.fx</groupId>
-            <artifactId>client-gui-fx</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.github.sibir007.clouds5.cloud.core</groupId>
-            <artifactId>cloud-core</artifactId>
-        </dependency>
+
 
 
     </dependencies>

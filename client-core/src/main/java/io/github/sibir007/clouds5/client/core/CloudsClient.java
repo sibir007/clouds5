@@ -4,9 +4,9 @@ public interface CloudsClient {
 
 
     void setClientController(ClientControllerTask clientController);
-    void addCloud(CloudImpl cloud);
-    void connectCLoud(CloudImpl cloud);
-    void addAccount(AccountImpl account);
-    void autorizeAccount(AccountImpl account);
+    void addCloud(Cloud cloud);
+    void connectCLoud(Cloud cloud);
+    void addAccount(Cloud cloud, Account account);
+    void authorizeAccount(Cloud cloud, Account account);
 
 }

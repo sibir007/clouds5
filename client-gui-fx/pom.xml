@@ -11,8 +11,7 @@
     <artifactId>client-gui-fx</artifactId>
     <packaging>jar</packaging>
 
-    <name>client-gui-fx</name>
-    <url>http://maven.apache.org</url>
+
 
     <properties>
     </properties>
@@ -49,12 +48,38 @@
         <dependency>
             <groupId>io.github.sibir007.clouds5.cloud.core</groupId>
             <artifactId>cloud-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
 
 
     </dependencies>
 
+<build>
+    <plugins>
+<!--        <plugin>-->
+<!--            <groupId>org.apache.maven.plugins</groupId>-->
+<!--            <artifactId>maven-compiler-plugin</artifactId>-->
+<!--            <version>3.8.0</version>-->
+<!--            <configuration>-->
+<!--                <release>11</release>-->
+<!--            </configuration>-->
+<!--        </plugin>-->
+        <plugin>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-maven-plugin</artifactId>
+            <version>0.0.6</version>
+            <executions>
+                <execution>
+                    <id>default-cli</id>
 
+                    <configuration>
+                        <mainClass>io.github.sibir007.clouds5.client.gui.fx.GuiFxApp</mainClass>
+
+                    </configuration>
+                </execution>
+            </executions>
+
+        </plugin>
+    </plugins>
+</build>
 
 </project>

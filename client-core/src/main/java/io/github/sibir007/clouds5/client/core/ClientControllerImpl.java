@@ -5,7 +5,7 @@ import java.util.Queue;
 public class ClientControllerImpl implements ClientController {
 
     private ClientControllerTask clientControllerTask = new ClientControllerTask();
-    private Queue
+
 
     @Override
     public void addCloud(Cloud cloud) {

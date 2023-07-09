@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.BorderPane?>
+
+
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:id="mainView"
+            fx:controller="io.github.sibir007.clouds5.client.gui.fx.controllers.MainViewController"
+>
+    <top>
+        <MenuBar>
+            <Menu text="menage clouds view" onAction="#selectMenageCloudsView"></Menu>
+            <Menu text="menage files view" onAction="#selectMenageFilesView"></Menu>
+        </MenuBar>
+    </top>
+</BorderPane>

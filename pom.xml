@@ -7,8 +7,8 @@
     <packaging>pom</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
 
     </properties>
 
@@ -37,37 +37,58 @@
             <dependency>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-controls</artifactId>
-                <version>14</version>
+                <version>17.0.7</version>
             </dependency>
             <dependency>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-fxml</artifactId>
-                <version>14</version>
+                <version>17.0.7</version>
             </dependency>
             <dependency>
                 <groupId>io.github.sibir007.clouds5.client.core</groupId>
                 <artifactId>client-core</artifactId>
                 <version>1.0-SNAPSHOT</version>
+                <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>io.github.sibir007.clouds5.client.gui.fx</groupId>
                 <artifactId>client-gui-fx</artifactId>
                 <version>1.0-SNAPSHOT</version>
+                <scope>compile</scope>
+
             </dependency>
             <dependency>
                 <groupId>io.github.sibir007.clouds5.cloud.core</groupId>
                 <artifactId>cloud-core</artifactId>
                 <version>1.0-SNAPSHOT</version>
+                <scope>compile</scope>
+
             </dependency>
 
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                    <configuration>
+                        <!-- put your configurations here -->
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <modules>
 
         <module>client-core</module>
         <module>cloud-core</module>
         <module>client-gui-fx</module>
+        <module>javafx-test4</module>
     </modules>
 
 
