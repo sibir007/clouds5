@@ -37,6 +37,9 @@ public class GuiFxApp extends Application {
     }
     private static Parent loadFXML(String fxml) throws IOException {
         URL url = GuiFxApp.class.getResource("mainView.fxml");
+        if (url == null){
+            System.out.println("URL is null");
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         return fxmlLoader.load();
     }

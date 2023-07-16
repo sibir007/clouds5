@@ -1,4 +1,4 @@
-package io.github.sibir007.clouds5.client.gui.fx.model;
+package io.github.sibir007.clouds5.client.gui.fx.model.bean;
 import io.github.sibir007.clouds5.client.core.Account;
 import javafx.beans.property.SimpleStringProperty;
 

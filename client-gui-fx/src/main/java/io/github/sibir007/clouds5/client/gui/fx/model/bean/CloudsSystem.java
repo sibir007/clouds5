@@ -1,4 +1,4 @@
-package io.github.sibir007.clouds5.client.gui.fx.model;
+package io.github.sibir007.clouds5.client.gui.fx.model.bean;
 
 import com.sun.javafx.collections.ObservableSetWrapper;
 import io.github.sibir007.clouds5.client.core.Cloud;

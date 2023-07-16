@@ -14,7 +14,7 @@ public class CloudImpl implements Cloud {
         this.port = port;
         id = UUID.randomUUID();
     }
-    public String getUrl() {
+    public String getHost() {
         return url;
     }
 
@@ -38,7 +38,7 @@ public class CloudImpl implements Cloud {
     public String toString(){
         return "[Cloud /n"
                 + "id: " + getId() + "/n"
-                + "url" + getUrl() + "/n"
+                + "url" + getHost() + "/n"
                 + "port" + getPort() + "/n"
                 + "accounts: /n"
                 +

@@ -1,4 +1,4 @@
-package io.github.sibir007.clouds5.client.gui.fx.model;
+package io.github.sibir007.clouds5.client.gui.fx.model.bean;
 
 import com.sun.javafx.collections.ObservableSetWrapper;
 import io.github.sibir007.clouds5.client.core.Account;
@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableIntegerValue;
 import javafx.beans.value.ObservableStringValue;
 import javafx.collections.ObservableSet;
+
 import java.util.HashSet;
 
 public class CloudBean implements Cloud {
@@ -21,7 +22,7 @@ public class CloudBean implements Cloud {
     }
 
     @Override
-    public String getUrl() {
+    public String getHost() {
         return urlProperty.get();
     }
 

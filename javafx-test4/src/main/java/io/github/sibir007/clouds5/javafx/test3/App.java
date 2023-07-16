@@ -29,6 +29,11 @@ public class App extends Application {
 
     private static Parent loadFXML(String fxml) throws IOException {
         URL url = App.class.getResource("primary.fxml");
+        if (url == null){
+            System.out.println("URL is null");
+        }else {
+            System.out.println("URL is not null" + url);
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         return fxmlLoader.load();
     }
