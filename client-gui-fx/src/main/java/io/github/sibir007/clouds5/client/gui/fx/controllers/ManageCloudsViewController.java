@@ -1,6 +1,6 @@
 package io.github.sibir007.clouds5.client.gui.fx.controllers;
 
-import io.github.sibir007.clouds5.client.gui.fx.model.CloudImpl;
+import io.github.sibir007.clouds5.client.gui.fx.model.CloudBeenImpl;
 import io.github.sibir007.clouds5.client.gui.fx.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,9 +39,9 @@ public class ManageCloudsViewController {
 
     private void initCloudsTable() {
         cloudsTable.setItems(model.getClouds());
-        TableColumn<CloudImpl, String> hostCol = new TableColumn<>("host");
+        TableColumn<CloudBeenImpl, String> hostCol = new TableColumn<>("host");
         hostCol.setCellValueFactory(new PropertyValueFactory<>(model.getClouds().get(0).getHostProperty().getName()));
-        TableColumn<CloudImpl, Integer> portCol = new TableColumn<>("port");
+        TableColumn<CloudBeenImpl, Integer> portCol = new TableColumn<>("port");
         portCol.setCellValueFactory(new PropertyValueFactory<>(model.getClouds().get(0).getPortProperty().getName()));
         cloudsTable.getColumns().setAll(hostCol, portCol);
     }

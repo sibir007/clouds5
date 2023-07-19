@@ -7,14 +7,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-public class CloudImpl implements Cloud{
+public class CloudBeenImpl implements Cloud{
     private SimpleStringProperty host = new SimpleStringProperty(this, "host");
     private SimpleIntegerProperty port = new SimpleIntegerProperty(this, "port");
     private ObservableList<Account> accounts = FXCollections.observableArrayList();
-    public CloudImpl(String host, int port){
+    public CloudBeenImpl(String host, int port){
         this.host.set(host);
         this.port.set(port);
     }
@@ -63,7 +62,7 @@ public class CloudImpl implements Cloud{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CloudImpl cloud = (CloudImpl) o;
+        CloudBeenImpl cloud = (CloudBeenImpl) o;
         return Objects.equals(host.get(), cloud.getHost()) & port.get() == cloud.getPort();
     }
 

@@ -7,13 +7,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 
-public class Model {
+public class ModelImpl {
     private static Logger logger = LogManager.getLogger();
 
     private static final String fname = "MODEL";
-    private static Model model;
+    private static ModelImpl model;
     private ObservableList<CloudBeenImpl> clouds;
-    private Model(){
+    private ModelImpl(){
         logger.trace("in constructor");
         File f = new File(fname);
         clouds = FXCollections.observableArrayList();
@@ -47,9 +47,9 @@ public class Model {
             }
         }
     }
-    public static Model getModel(){
+    public static ModelImpl getModel(){
         if (model == null){
-            model = new Model();
+            model = new ModelImpl();
         }
         return model;
     }
@@ -58,16 +58,16 @@ public class Model {
         return clouds;
     }
     public void save(){
-        logger.trace("in save");
-        if (clouds != null) {
-            try (OutputStream os = new FileOutputStream(fname);
-                 ObjectOutput oos = new ObjectOutputStream(os)){
-                oos.writeObject(clouds);
-                logger.trace("cloud save");
-            } catch (Exception e) {
-                throw new RuntimeException("file write exception");
-            }
-        }
+//        logger.trace("in save");
+//        if (clouds != null) {
+//            try (OutputStream os = new FileOutputStream(fname);
+//                 ObjectOutput oos = new ObjectOutputStream(os)){
+//                oos.writeObject(clouds);
+//                logger.trace("cloud save");
+//            } catch (Exception e) {
+//                throw new RuntimeException("file write exception");
+//            }
+//        }
 
     }
 

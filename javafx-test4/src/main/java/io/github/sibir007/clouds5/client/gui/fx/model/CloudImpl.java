@@ -1,16 +1,16 @@
 package io.github.sibir007.clouds5.client.gui.fx.model;
 
+import io.github.sibir007.clouds5.client.core.Account;
 import io.github.sibir007.clouds5.client.core.Cloud;
+import javafx.collections.ObservableList;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class CloudImpl implements Cloud, Serializable {
     private String host;
     private int port;
-    private Set<AccountImpl> accounts = new HashSet<>();
+    private List<Account> accounts = new ArrayList<>();
     public CloudImpl(String host, int port){
         this.host = host;
         this.port = port;
@@ -19,21 +19,34 @@ public class CloudImpl implements Cloud, Serializable {
     public String getHost() {
         return host;
     }
+    public void setHost(String host){
+        this.host = host;
+    }
 
     @Override
     public int getPort() {
         return port;
     }
 
-    public boolean addAccount(AccountImpl account){
+    public void setPort(int port){
+        this.port = port;
+    }
+
+    public boolean addAccount(Account account){
         return accounts.add(account);
     }
 
-    public boolean removeAccount(AccountImpl account) {
+    public boolean removeAccount(Account account) {
         return accounts.remove(account);
     }
 
-    public Set<AccountImpl> getAccounts(){
+    @Override
+    public boolean setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+        return true;
+    }
+
+    public List<Account> getAccounts(){
         return accounts;
     }
 

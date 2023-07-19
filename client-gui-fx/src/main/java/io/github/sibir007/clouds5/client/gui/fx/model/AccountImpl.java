@@ -1,35 +1,37 @@
 package io.github.sibir007.clouds5.client.gui.fx.model;
 
 import io.github.sibir007.clouds5.client.core.Account;
-import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 public class AccountImpl implements Account, Serializable {
-    private SimpleStringProperty userName = new SimpleStringProperty(this, "userName");
-    private SimpleStringProperty password = new SimpleStringProperty(this, "password");
+    private String userName;
+    private String password;
 
-    public AccountImpl (String userName, String password){
-        this.userName.set(userName);
-        this.password.set(password);
+    public AccountImpl(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
     }
+
     @Override
     public String getUserName() {
-        return userName.get();
+        return userName;
     }
 
     @Override
     public String getPassword() {
-        return password.get();
+        return password;
     }
 
+    @Override
     public void setUserName(String userName) {
-        this.userName.set(userName);
+        this.userName = userName;
     }
 
+    @Override
     public void setPassword(String password) {
-        this.password.set(password);
+        this.password = password;
     }
 
     @Override
@@ -37,19 +39,19 @@ public class AccountImpl implements Account, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountImpl account = (AccountImpl) o;
-        return Objects.equals(userName.get(), account.userName.get());
+        return Objects.equals(userName, account.getUserName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userName.get());
+        return Objects.hash(userName);
     }
 
     @Override
     public String toString() {
         return "AccountImpl{" +
-                "userName='" + userName.get() + '\'' +
-                ", password='" + password.get() + '\'' +
+                "userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

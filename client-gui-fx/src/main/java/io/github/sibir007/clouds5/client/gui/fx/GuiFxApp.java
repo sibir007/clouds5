@@ -3,6 +3,7 @@ package io.github.sibir007.clouds5.client.gui.fx;
 import io.github.sibir007.clouds5.client.core.ClientControllerTask;
 import io.github.sibir007.clouds5.client.core.PostedCloudsClient;
 import io.github.sibir007.clouds5.client.gui.fx.controllers.MainViewController;
+import io.github.sibir007.clouds5.client.gui.fx.model.Model;
 import io.github.sibir007.clouds5.cloud.core.App;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -50,7 +51,6 @@ public class GuiFxApp extends Application {
 //        stage.setScene(scene);
         stage.setTitle("Clouds client");
         stage.show();
-        logger.traceExit(false);
 
     }
 
@@ -63,6 +63,8 @@ public class GuiFxApp extends Application {
     @Override
     public void stop() throws Exception {
         logger.trace("stop method");
+        Model.getModel().save();
+//        Thread.currentThread().wait(100000000l);
         super.stop();
     }
 
