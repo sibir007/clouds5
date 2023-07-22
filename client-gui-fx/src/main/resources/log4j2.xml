@@ -67,20 +67,20 @@
         <!--        </Async>-->
     </Appenders>
     <Loggers>
-        <Root level="off">
+        <Root level="trace">
             <AppenderRef ref="LogToConsole"/>
             <!--            <AppenderRef ref="LogToRollingFile"/>-->
         </Root>
-        <Logger name="io.github.sibir007.clouds5.client.gui.fx.GuiFxApp" level="trace"
-                additivity="false">
-            <AppenderRef ref="LogToConsole"/>
-            <!--            <AppenderRef ref="LogToFile"/>-->
-        </Logger>
-        <Logger name="io.github.sibir007.clouds5.client.gui.fx.model.Model" level="trace"
-                additivity="false">
-            <AppenderRef ref="LogToConsole"/>
-            <!--            <AppenderRef ref="LogToFile"/>-->
-        </Logger>
+<!--        <Logger name="io.github.sibir007.clouds5.client.gui.fx.GuiFxApp" level="trace"-->
+<!--                additivity="false">-->
+<!--            <AppenderRef ref="LogToConsole"/>-->
+<!--            &lt;!&ndash;            <AppenderRef ref="LogToFile"/>&ndash;&gt;-->
+<!--        </Logger>-->
+<!--        <Logger name="io.github.sibir007.clouds5.client.gui.fx.model.Model" level="trace"-->
+<!--                additivity="false">-->
+<!--            <AppenderRef ref="LogToConsole"/>-->
+<!--            &lt;!&ndash;            <AppenderRef ref="LogToFile"/>&ndash;&gt;-->
+<!--        </Logger>-->
         <!--        <Logger name="io.github.sibir007.clouds5.client.gui.fx.GuiFxApp" level="trace">-->
         <!--&lt;!&ndash;                        <AppenderRef ref="LogToConsole"/>&ndash;&gt;-->
         <!--        </Logger>-->

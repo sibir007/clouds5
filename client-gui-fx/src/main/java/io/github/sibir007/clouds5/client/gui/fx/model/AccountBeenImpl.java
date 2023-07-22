@@ -7,8 +7,17 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class AccountBeenImpl implements Account {
-    private SimpleStringProperty userName = new SimpleStringProperty(this, "userName");
-    private SimpleStringProperty password = new SimpleStringProperty(this, "password");
+    private static final String nameUserNameProperty  = "userName";
+    public static String getNameUserNameProperty(){
+        return nameUserNameProperty;
+    }
+    private static final String namePasswordProperty  = "password";
+    public static String getNamePasswordProperty(){
+        return namePasswordProperty;
+    }
+    private SimpleStringProperty userName = new SimpleStringProperty(this, nameUserNameProperty);
+
+    private SimpleStringProperty password = new SimpleStringProperty(this, namePasswordProperty);
 
     public AccountBeenImpl(String userName, String password) {
         this.userName.set(userName);
@@ -19,6 +28,13 @@ public class AccountBeenImpl implements Account {
     public String getUserName() {
         return userName.get();
     }
+    @Override
+    public void setUserName(String userName) {
+        this.userName.set(userName);
+    }
+    public SimpleStringProperty getUserNameProperty(){
+        return userName;
+    }
 
     @Override
     public String getPassword() {
@@ -26,13 +42,11 @@ public class AccountBeenImpl implements Account {
     }
 
     @Override
-    public void setUserName(String userName) {
-        this.userName.set(userName);
-    }
-
-    @Override
     public void setPassword(String password) {
         this.password.set(password);
+    }
+    public SimpleStringProperty getPasswordProperty(){
+        return password;
     }
 
     @Override

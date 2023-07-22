@@ -15,15 +15,16 @@ public class FilePersistenceProvider implements ModelPersistence {
 
     public static final ModelPersistence PROVIDER = new FilePersistenceProvider();
 
-    private FilePersistenceProvider() {}
+    private FilePersistenceProvider() {
+    }
 
-
+    //TODO не пишутся или не читаются аккаунты при записи/чтения в/из файла
     @Override
-    public List<Cloud> getModel() {
+    public ArrayList<CloudImpl> getModel() {
         if (FILE.exists()) {
             try (FileInputStream fis = new FileInputStream(FILENAME);
                  ObjectInputStream ois = new ObjectInputStream(fis)) {
-                ArrayList<Cloud> clouds = (ArrayList<Cloud>) ois.readObject();
+                ArrayList<CloudImpl> clouds = (ArrayList<CloudImpl>) ois.readObject();
                 return clouds;
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
@@ -34,12 +35,12 @@ public class FilePersistenceProvider implements ModelPersistence {
             }
 
         }
-        return new ArrayList<Cloud>();
+        return new ArrayList<CloudImpl>();
     }
 
     @Override
-    public void saveModel(List<Cloud> model) {
-        if (!FILE.exists()){
+    public void saveModel(ArrayList<CloudImpl> model) {
+        if (!FILE.exists()) {
             try {
                 FILE.createNewFile();
             } catch (IOException e) {
@@ -47,7 +48,7 @@ public class FilePersistenceProvider implements ModelPersistence {
             }
         }
         try (FileOutputStream fos = new FileOutputStream(FILE);
-        ObjectOutputStream oos = new ObjectOutputStream(fos)){
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(model);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

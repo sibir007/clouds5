@@ -2,6 +2,7 @@ package io.github.sibir007.clouds5.client.gui.fx.model;
 
 import io.github.sibir007.clouds5.client.core.Account;
 import io.github.sibir007.clouds5.client.core.Cloud;
+import io.github.sibir007.clouds5.client.gui.fx.persistance.AccountImpl;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -10,8 +11,16 @@ import javafx.collections.ObservableList;
 import java.util.*;
 
 public class CloudBeenImpl implements Cloud{
-    private SimpleStringProperty host = new SimpleStringProperty(this, "host");
-    private SimpleIntegerProperty port = new SimpleIntegerProperty(this, "port");
+    private static final String nameHostProperty = "host";
+    public static String getNameHostProperty(){
+        return nameHostProperty;
+    }
+    private static final String namePortProperty = "port";
+    public static String getNamePortProperty(){
+        return namePortProperty;
+    }
+    private SimpleStringProperty host = new SimpleStringProperty(this, nameHostProperty);
+    private SimpleIntegerProperty port = new SimpleIntegerProperty(this, namePortProperty);
     private ObservableList<Account> accounts = FXCollections.observableArrayList();
     public CloudBeenImpl(String host, int port){
         this.host.set(host);

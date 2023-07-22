@@ -1,11 +1,9 @@
-package io.github.sibir007.clouds5.client.gui.fx.model;
-
-import io.github.sibir007.clouds5.client.core.Account;
+package io.github.sibir007.clouds5.client.gui.fx.persistance;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class AccountImpl implements Account, Serializable {
+public class AccountImpl implements Serializable {
     private String userName;
     private String password;
 
@@ -14,22 +12,18 @@ public class AccountImpl implements Account, Serializable {
         this.password = password;
     }
 
-    @Override
     public String getUserName() {
         return userName;
     }
 
-    @Override
     public String getPassword() {
         return password;
     }
 
-    @Override
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    @Override
     public void setPassword(String password) {
         this.password = password;
     }

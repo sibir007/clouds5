@@ -24,8 +24,16 @@
     </BorderPane>
     <BorderPane fx:id="accounts">
         <center>
-            <Label fx:id="accountsLabel" text="cloud's account area"/>
+            <TableView fx:id="cloudsAccountsTable"/>
         </center>
+        <bottom>
+            <HBox>
+                <Button fx:id="newAccountButton" text="new" onAction="#createNewAccount"/>
+                <Button fx:id="deleteAccountButton" text="del" onAction="#deleteAccount"/>
+                <Button fx:id="authoriseAccountButton" text="aut" onAction="#authoriseAccount"/>
+                <Button fx:id="editAccountButton" text="edit" onAction="#editAccount"/>
+            </HBox>
+        </bottom>
     </BorderPane>
 
 </HBox>
