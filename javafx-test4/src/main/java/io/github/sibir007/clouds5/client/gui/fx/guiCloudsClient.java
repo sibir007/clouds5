@@ -1,16 +1,14 @@
 package io.github.sibir007.clouds5.client.gui.fx;
 
 
-import io.github.sibir007.clouds5.client.core.Account;
+import io.github.sibir007.clouds5.client.core.*;
 import io.github.sibir007.clouds5.client.core.ClientControllerTask;
-import io.github.sibir007.clouds5.client.core.Cloud;
-import io.github.sibir007.clouds5.client.core.PostedCloudsClient;
 
 public class guiCloudsClient implements PostedCloudsClient {
 
     private ClientControllerTask clientController;
     @Override
-    public void setClientController(ClientControllerTask clientController) {
+    public void setClientController(ClientController clientController) {
 
     }
 
@@ -33,6 +31,16 @@ public class guiCloudsClient implements PostedCloudsClient {
 
 
     public void authorizeAccount(Cloud cloud, Account account) {
+
+    }
+
+    @Override
+    public void beganTransaction() {
+
+    }
+
+    @Override
+    public void endTransaction() {
 
     }
 

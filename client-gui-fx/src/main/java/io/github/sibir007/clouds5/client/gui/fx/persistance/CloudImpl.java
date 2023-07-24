@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CloudImpl implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String host;
     private int port;
     private ArrayList<AccountImpl> accounts = new ArrayList<>();
@@ -65,7 +66,7 @@ public class CloudImpl implements Serializable {
 
     @Override
     public String toString() {
-        return "CloudBeenImpl{" +
+        return "CloudImpl{" +
                 "host='" + host + '\'' +
                 ", port='" + port + '\'' +
                 "accounts=" + accounts.toString() +

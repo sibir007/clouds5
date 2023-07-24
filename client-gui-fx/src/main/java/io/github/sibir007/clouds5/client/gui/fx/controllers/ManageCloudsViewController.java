@@ -13,9 +13,10 @@ import javafx.scene.layout.BorderPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
+//TODO делать взаимодействие интерфейса через GuiClientCoordinator в ClientControllerPlug
 public class ManageCloudsViewController {
     private static Logger logger = LogManager.getLogger();
+    private GuiClientCoordinator clientCoordinator;
     @FXML
     private BorderPane accounts, clouds;
     @FXML
@@ -28,6 +29,7 @@ public class ManageCloudsViewController {
     private Model model;
 
     public void initialize() {
+        clientCoordinator = GuiClientCoordinator.getCoordinator();
         logger.trace("in initialise");
         model = Model.getModel();
         initCloudsTable();

@@ -1,34 +1,40 @@
 package io.github.sibir007.clouds5.client.core;
 
-import java.util.Queue;
-
 public class ClientControllerImpl implements ClientController {
+    private static ClientController clientController = new ClientControllerImpl();
+    public static ClientController getClientController(){
+        return clientController;
+    }
+    private ClientControllerImpl(){}
+
 
     private ClientControllerTask clientControllerTask = new ClientControllerTask();
 
 
     @Override
+    public void setCloudsClient(PostedCloudsClient cloudsClient) {
+
+    }
+
+    @Override
     public void addCloud(Cloud cloud) {
 
     }
-
     @Override
-    public void editCloud(Cloud cloud) {
+    public void newAccount(Cloud cloud, Account account){
 
     }
 
     @Override
-    public void addAccount(Account account) {
+    public void closeAccount(Cloud cloud, Account account){
 
     }
 
     @Override
-    public void removeAccount(Account account) {
+    public void editAccount(Cloud cloud, Account oldAccount, Account newAccount) {
 
     }
-
-    @Override
-    public void editAccount(Account account) {
+    public void authoriseAccount(Cloud cloud, Account account){
 
     }
 }

@@ -64,7 +64,7 @@ public class CloudBeenImpl implements Cloud{
     }
 
     public boolean setAccounts(List<Account> accounts) {
-        return this.accounts.setAll();
+        return this.accounts.setAll(accounts);
     }
 
     @Override

@@ -1,10 +1,8 @@
 package io.github.sibir007.clouds5.client.gui.fx.controllers;
 
-import io.github.sibir007.clouds5.client.core.Account;
-import io.github.sibir007.clouds5.client.core.ClientControllerTask;
-import io.github.sibir007.clouds5.client.core.Cloud;
-import io.github.sibir007.clouds5.client.core.PostedCloudsClient;
+import io.github.sibir007.clouds5.client.core.*;
 import io.github.sibir007.clouds5.client.gui.fx.GuiFxApp;
+import io.github.sibir007.clouds5.client.gui.fx.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +13,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-public class MainViewController  implements PostedCloudsClient {
+public class MainViewController{
     private static Logger logger = LogManager.getLogger();
+    private GuiClientCoordinator clientCoordinator;
 
     @FXML
     private BorderPane mainView;
@@ -25,10 +24,13 @@ public class MainViewController  implements PostedCloudsClient {
     private ManageCloudsViewController manageCloudsViewController;
     private Parent manageFilesView;
     private ManageFilesViewController manageFilesViewController;
+    private Model model;
 
 
     public void initialize() throws IOException {
+        clientCoordinator = GuiClientCoordinator.getCoordinator();
         logger.trace("in initialize");
+        model = Model.getModel();
         initializeManageCloudsView();
         initializeManageFilesView();
         mainView.setCenter(manageCloudsView);
@@ -58,38 +60,5 @@ public class MainViewController  implements PostedCloudsClient {
     public void selectMenageCloudsView(ActionEvent actionEvent) {
         logger.trace("in selectMenageCloudsView pressed");
         mainView.setCenter(manageCloudsView);
-    }
-
-    @Override
-    public void setClientController(ClientControllerTask clientController) {
-
-    }
-
-    @Override
-    public void addCloud(Cloud cloud) {
-
-    }
-
-    @Override
-    public void connectCLoud(Cloud cloud) {
-
-    }
-
-    @Override
-    public void addAccount(Cloud cloud, Account account) {
-
-    }
-
-    @Override
-    public void authorizeAccount(Cloud cloud, Account account) {
-
-    }
-
-    @Override
-    public void postMessage(String msg) {
-
-    }
-
-    public void switchToSecondary(ActionEvent actionEvent) {
     }
 }

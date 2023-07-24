@@ -2,7 +2,6 @@ package io.github.sibir007.clouds5.client.gui.fx;
 
 import io.github.sibir007.clouds5.client.core.ClientControllerTask;
 import io.github.sibir007.clouds5.client.core.PostedCloudsClient;
-import io.github.sibir007.clouds5.javafx.test3.App;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
