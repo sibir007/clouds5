@@ -6,19 +6,19 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class AccountImpl implements Account, Serializable {
+    private static final long serialVersionUID = 1L;
     private String userName;
     private String password;
 
-    public AccountImpl (String userName, String password){
+    public AccountImpl(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
-    @Override
+
     public String getUserName() {
         return userName;
     }
 
-    @Override
     public String getPassword() {
         return password;
     }
@@ -36,7 +36,7 @@ public class AccountImpl implements Account, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountImpl account = (AccountImpl) o;
-        return Objects.equals(userName, account.userName);
+        return Objects.equals(userName, account.getUserName());
     }
 
     @Override

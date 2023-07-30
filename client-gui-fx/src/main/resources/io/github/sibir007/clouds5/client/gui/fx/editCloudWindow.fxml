@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="io.github.sibir007.clouds5.client.gui.fx.controllers.EditCloudWindowController"
+            prefHeight="400.0" prefWidth="600.0">
+
+
+    <center>
+        <VBox>
+            <Label fx:id="oldCloudLabel" text=""/>
+            <HBox>
+                <VBox>
+                    <Label text="NewHost"/>
+                    <TextField fx:id="host" promptText="enter host ip"/>
+                    <Label fx:id="hostValidationLabel" text=""/>
+                </VBox>
+                <VBox>
+                    <Label text="NewPort"/>
+                    <TextField fx:id="port" promptText="enter host port"/>
+                    <Label fx:id="portValidationLabel" text=""/>
+                </VBox>
+            </HBox>
+
+            <Label fx:id="cloudValidationLabel" text=""/>
+        </VBox>
+
+    </center>
+    <bottom>
+        <HBox>
+            <Button text="Edit" onAction="#editCloud"/>
+            <Button text="Cancel" onAction="#cancelEditCloud"/>
+        </HBox>
+    </bottom>
+</BorderPane>

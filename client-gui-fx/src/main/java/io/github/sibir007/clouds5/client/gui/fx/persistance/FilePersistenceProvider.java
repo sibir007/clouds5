@@ -1,12 +1,11 @@
 package io.github.sibir007.clouds5.client.gui.fx.persistance;
 
-import io.github.sibir007.clouds5.client.core.Cloud;
+import io.github.sibir007.clouds5.client.gui.fx.model.CloudImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FilePersistenceProvider implements ModelPersistence {
     private static Logger logger = LogManager.getLogger();
@@ -18,7 +17,6 @@ public class FilePersistenceProvider implements ModelPersistence {
     private FilePersistenceProvider() {
     }
 
-    //TODO не пишутся или не читаются аккаунты при записи/чтения в/из файла
     @Override
     public ArrayList<CloudImpl> getModel() {
         if (FILE.exists()) {

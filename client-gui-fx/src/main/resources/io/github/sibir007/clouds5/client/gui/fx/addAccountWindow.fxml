@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="io.github.sibir007.clouds5.client.gui.fx.controllers.AddAccountWindowController"
+            prefHeight="400.0" prefWidth="600.0">
+
+
+    <center>
+        <VBox>
+            <HBox>
+                <VBox>
+                    <Label text="user name"/>
+                    <TextField fx:id="userName" promptText="enter user name"/>
+                    <Label fx:id="userNameValidationLabel" text=""/>
+                </VBox>
+                <VBox>
+                    <Label text="password"/>
+                    <TextField fx:id="password" promptText="enter password"/>
+                    <Label fx:id="passwordValidationLabel" text=""/>
+                </VBox>
+            </HBox>
+
+            <Label fx:id="accountValidationLabel" text=""/>
+        </VBox>
+
+    </center>
+    <bottom>
+        <HBox>
+            <Button text="Create" onAction="#createAccount"/>
+            <Button text="Cancel" onAction="#cancelCreateAccount"/>
+        </HBox>
+    </bottom>
+</BorderPane>

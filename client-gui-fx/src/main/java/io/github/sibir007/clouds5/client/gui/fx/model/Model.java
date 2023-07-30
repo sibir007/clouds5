@@ -3,18 +3,15 @@ package io.github.sibir007.clouds5.client.gui.fx.model;
 import io.github.sibir007.clouds5.client.core.Cloud;
 import io.github.sibir007.clouds5.client.gui.fx.persistance.ModelPersistence;
 import io.github.sibir007.clouds5.client.gui.fx.util.BeenModelConverter;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.io.*;
 
 public class Model {
     private static Logger logger = LogManager.getLogger();
 
     private static Model model;
-    private ObservableList<Cloud> clouds;
+    private ObservableList<CloudBeenImpl> clouds;
     private Model() {
         logger.trace("in constructor");
         clouds = BeenModelConverter.convertToBeen(ModelPersistence.getModelFromFile());
@@ -28,7 +25,7 @@ public class Model {
         return model;
     }
 
-    public ObservableList<Cloud> getClouds(){
+    public ObservableList<CloudBeenImpl> getClouds(){
         return clouds;
     }
     public void save(){
@@ -37,6 +34,21 @@ public class Model {
             ModelPersistence.sameModelToFile(BeenModelConverter.convertFromBeen(clouds));
         }
 
+    }
+
+    public boolean addCloud(CloudBeenImpl cloud){
+        return clouds.add(cloud);
+    }
+    public CloudBeenImpl removeCloud(int cloudIndex){
+       return clouds.remove(cloudIndex);
+    }
+
+    public boolean removeCloud(Cloud cloud){
+        return clouds.remove(cloud);
+    }
+
+    public CloudBeenImpl getCloud(int cloudIndex){
+        return clouds.get(cloudIndex);
     }
 
 

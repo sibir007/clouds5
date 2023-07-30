@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="io.github.sibir007.clouds5.client.gui.fx.controllers.AddCloudWindowController"
+            prefHeight="400.0" prefWidth="600.0">
+
+
+    <center>
+        <VBox>
+            <HBox>
+                <VBox>
+                    <Label text="host"/>
+                    <TextField fx:id="host" promptText="enter host ip"/>
+                    <Label fx:id="hostValidationLabel" text=""/>
+                </VBox>
+                <VBox>
+                    <Label text="port"/>
+                    <TextField fx:id="port" promptText="enter host port"/>
+                    <Label fx:id="portValidationLabel" text=""/>
+                </VBox>
+            </HBox>
+
+            <Label fx:id="cloudValidationLabel" text=""/>
+        </VBox>
+
+    </center>
+    <bottom>
+        <HBox>
+            <Button text="Create" onAction="#addCloud"/>
+            <Button text="Cancel" onAction="#cancelAddCloud"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -14,6 +14,11 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 
 public class MainViewController{
+    private static MainViewController rootController;
+    public static MainViewController getRootController(){
+        return rootController;
+    }
+
     private static Logger logger = LogManager.getLogger();
     private GuiClientCoordinator clientCoordinator;
 
@@ -28,6 +33,7 @@ public class MainViewController{
 
 
     public void initialize() throws IOException {
+        rootController = this;
         clientCoordinator = GuiClientCoordinator.getCoordinator();
         logger.trace("in initialize");
         model = Model.getModel();

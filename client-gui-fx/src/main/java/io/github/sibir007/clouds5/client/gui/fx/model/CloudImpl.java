@@ -1,17 +1,18 @@
-package io.github.sibir007.clouds5.client.gui.fx.persistance;
+package io.github.sibir007.clouds5.client.gui.fx.model;
 
 import io.github.sibir007.clouds5.client.core.Account;
+import io.github.sibir007.clouds5.client.core.Cloud;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CloudImpl implements Serializable {
+public class CloudImpl implements Cloud, Serializable {
     private static final long serialVersionUID = 1L;
     private String host;
     private int port;
-    private ArrayList<AccountImpl> accounts = new ArrayList<>();
+    private ArrayList<Account> accounts = new ArrayList<>();
     public CloudImpl(String host, int port){
         this.host = host;
         this.port = port;
@@ -35,20 +36,28 @@ public class CloudImpl implements Serializable {
         this.port = port;
     }
 
-    public boolean addAccount(AccountImpl account){
+    @Override
+    public boolean addAccount(Account account) {
+        assert account instanceof AccountImpl;
         return accounts.add(account);
     }
 
-    public boolean removeAccount(AccountImpl account) {
+    @Override
+    public boolean removeAccount(Account account) {
         return accounts.remove(account);
     }
 
-    public ArrayList<AccountImpl> getAccounts(){
-        return accounts;
+    @Override
+    public boolean setAccounts(List<Account> accounts) {
+        assert accounts instanceof ArrayList;
+        this.accounts = (ArrayList<Account>) accounts;
+        return false;
     }
 
-    public boolean setAccounts(ArrayList<AccountImpl> accounts) {
-        return this.accounts.addAll(accounts);
+
+
+    public List<Account> getAccounts(){
+        return accounts;
     }
 
     @Override

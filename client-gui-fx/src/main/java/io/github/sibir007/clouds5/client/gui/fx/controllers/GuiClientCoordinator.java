@@ -1,6 +1,14 @@
 package io.github.sibir007.clouds5.client.gui.fx.controllers;
 
 import io.github.sibir007.clouds5.client.core.*;
+import io.github.sibir007.clouds5.client.gui.fx.model.AccountBeenImpl;
+import io.github.sibir007.clouds5.client.gui.fx.model.CloudBeenImpl;
+import io.github.sibir007.clouds5.client.gui.fx.model.CloudImpl;
+import io.github.sibir007.clouds5.client.gui.fx.model.Model;
+import javafx.collections.ObservableList;
+
+import java.util.List;
+import java.util.Objects;
 
 public class GuiClientCoordinator {
     private static GuiClientCoordinator coordinator = new GuiClientCoordinator();
@@ -10,6 +18,8 @@ public class GuiClientCoordinator {
     }
 
     private ClientController clientController;
+
+    private Model model = Model.getModel();
 
     private GuiClientCoordinator(){
 
@@ -22,9 +32,36 @@ public class GuiClientCoordinator {
 
 
 
-    public void addCloud(Cloud cloud) {
-
+    public void addCloud(CloudBeenImpl cloud) {
+        model.addCloud(cloud);
     }
+
+    public void addCloud(String host, int port){
+        addCloud(new CloudBeenImpl(host, port));
+    }
+
+    public CloudBeenImpl deleteCLoud(int cloudIndex){
+        assert Objects.nonNull(cloudIndex) && cloudIndex >= 0 ;
+        return  model.removeCloud(cloudIndex);
+    }
+
+    // TODO: 30.07.2023  заглушка, переделывать замену Cloud на CloudsClient
+    public void editCLoud(CloudBeenImpl oldCloud, CloudBeenImpl newCloud){
+        model.addCloud((newCloud));
+        model.removeCloud(oldCloud);
+    }
+
+    public void editCLoud(int oldCLoudIndex, String newCloudHost, int newCloudPort) {
+        List<Account> accounts = model.getCloud(oldCLoudIndex).getAccounts();
+        CloudBeenImpl newCloudBeen = new CloudBeenImpl(newCloudHost, newCloudPort);
+        newCloudBeen.setAccounts(accounts);
+        editCLoud(model.getCloud(oldCLoudIndex), newCloudBeen);
+    }
+    
+    public void editCloud(int oldCLoudIndex, String newCloudHost, int newCloudPort){
+        
+    }
+
 
 
     public void newAccount(Cloud cloud, Account account) {
@@ -45,4 +82,6 @@ public class GuiClientCoordinator {
     public void authoriseAccount(Cloud cloud, Account account) {
 
     }
+
+    
 }

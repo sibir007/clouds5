@@ -2,7 +2,6 @@ package io.github.sibir007.clouds5.client.gui.fx.model;
 
 import io.github.sibir007.clouds5.client.core.Account;
 import io.github.sibir007.clouds5.client.core.Cloud;
-import io.github.sibir007.clouds5.client.gui.fx.persistance.AccountImpl;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -52,6 +51,7 @@ public class CloudBeenImpl implements Cloud{
     }
 
     public boolean addAccount(Account account){
+        assert account instanceof AccountBeenImpl;
         return accounts.add(account);
     }
 
@@ -59,11 +59,12 @@ public class CloudBeenImpl implements Cloud{
         return accounts.remove(account);
     }
 
-    public ObservableList<Account> getAccounts(){
+    public List<Account> getAccounts(){
         return accounts;
     }
 
     public boolean setAccounts(List<Account> accounts) {
+        assert accounts instanceof ObservableList;
         return this.accounts.setAll(accounts);
     }
 
