@@ -4,6 +4,7 @@ import io.github.sibir007.clouds5.client.core.Account;
 import io.github.sibir007.clouds5.client.core.Cloud;
 
 public class AuthoriseAccount implements CloudTransactionTask {
+
     public static final AuthoriseAccount COMMAND(Cloud cloud, Account account){
         return new AuthoriseAccount(cloud, account);
     }
@@ -22,4 +23,8 @@ public class AuthoriseAccount implements CloudTransactionTask {
         return account;
     }
 
+    @Override
+    public CommandType commandType() {
+        return null;
+    }
 }

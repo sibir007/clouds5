@@ -13,11 +13,15 @@ import java.util.concurrent.LinkedBlockingDeque;
 public class ClientControllerTask extends Thread{
     private CloudsClient cloudsClient;
 
-    private BlockingDeque<CloudTransactionTask> cloudTransactionTaskBlockingDeque = new LinkedBlockingDeque<>(1);
 
 
     public ClientControllerTask(){
         super("ClientControllerTask");
+    }
+
+    @Override
+    public void run(){
+
     }
 
 

@@ -22,4 +22,8 @@ public class CloseAccount implements CloudTransactionTask {
         return account;
     }
 
+    @Override
+    public CommandType commandType() {
+        return null;
+    }
 }

@@ -16,11 +16,14 @@ import java.util.List;
 
 public class BeenModelConverter {
     private static Logger logger = LogManager.getLogger();
-    private BeenModelConverter(){}
-    public static ArrayList<CloudImpl> convertFromBeen(ObservableList<CloudBeenImpl> beenClouds){
+
+    private BeenModelConverter() {
+    }
+
+    public static ArrayList<CloudImpl> convertFromBeen(ObservableList<CloudBeenImpl> beenClouds) {
         logger.trace("im convertFromBeen");
         ArrayList<CloudImpl> clouds = new ArrayList<>();
-        for (Cloud beenCloud: beenClouds) {
+        for (Cloud beenCloud : beenClouds) {
             List<Account> cloudAccounts = getSimpleCloudAccounts(beenCloud);
             String host = beenCloud.getHost();
             int port = beenCloud.getPort();
@@ -35,7 +38,7 @@ public class BeenModelConverter {
     public static List<Account> getSimpleCloudAccounts(Cloud beenCloud) {
         List<Account> beenCloudAccounts = beenCloud.getAccounts();
         ArrayList<Account> accounts = new ArrayList<>();
-        for (Account beenAccount: beenCloudAccounts) {
+        for (Account beenAccount : beenCloudAccounts) {
             Account account = getSimpleAccount(beenAccount);
             accounts.add(account);
         }
@@ -49,29 +52,35 @@ public class BeenModelConverter {
         return account;
     }
 
-//TODO сделать реализацию сонвертации отдельно по Клоудам и Аккаунтем
-    public static ObservableList<CloudBeenImpl> convertToBeen(ArrayList<CloudImpl> clouds){
+
+    public static ObservableList<CloudBeenImpl> convertToBeen(ArrayList<CloudImpl> clouds) {
         logger.trace("im convertToBeen");
         logger.trace(clouds);
         ObservableList<CloudBeenImpl> beenClouds = FXCollections.observableArrayList();
-        for (CloudImpl cloud: clouds) {
-            List<Account> beenCloudAccounts = getBeenCloudAccounts(cloud);
-            String host = cloud.getHost();
-            int port = cloud.getPort();
-            CloudBeenImpl beenCloud = new CloudBeenImpl(host, port);
-            beenCloud.setAccounts(beenCloudAccounts);
+        for (CloudImpl cloud : clouds) {
+            CloudBeenImpl beenCloud = getBeenCloudFromCloud(cloud);
+
             beenClouds.add(beenCloud);
         }
         logger.trace(beenClouds);
         return beenClouds;
     }
 
-    private static List<Account> getBeenCloudAccounts(CloudImpl cloud) {
+    public static CloudBeenImpl getBeenCloudFromCloud(Cloud cloud) {
+        List<Account> beenCloudAccounts = getBeenCloudAccounts(cloud);
+        String host = cloud.getHost();
+        int port = cloud.getPort();
+        CloudBeenImpl beenCloud = new CloudBeenImpl(host, port);
+        beenCloud.setAccounts(beenCloudAccounts);
+        return beenCloud;
+    }
+
+    private static List<Account> getBeenCloudAccounts(Cloud cloud) {
         logger.trace("in getBeenCloudAccounts");
         logger.trace(cloud);
         List<Account> cloudAccounts = cloud.getAccounts();
         List<Account> beenCloudAccounts = FXCollections.observableArrayList();
-        for (Account account: cloudAccounts) {
+        for (Account account : cloudAccounts) {
             String userName = account.getUserName();
             String password = account.getPassword();
             AccountBeenImpl beenAccount = new AccountBeenImpl(userName, password);

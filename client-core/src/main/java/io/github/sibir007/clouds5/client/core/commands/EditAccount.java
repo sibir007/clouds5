@@ -26,4 +26,8 @@ public class EditAccount implements CloudTransactionTask {
         return newAccount;
     }
 
+    @Override
+    public CommandType commandType() {
+        return null;
+    }
 }

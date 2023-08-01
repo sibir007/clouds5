@@ -6,11 +6,14 @@ import io.github.sibir007.clouds5.client.gui.fx.model.CloudBeenImpl;
 import io.github.sibir007.clouds5.client.gui.fx.model.CloudImpl;
 import io.github.sibir007.clouds5.client.gui.fx.model.Model;
 import javafx.collections.ObservableList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Objects;
 
 public class GuiClientCoordinator {
+    private static Logger logger = LogManager.getLogger();
     private static GuiClientCoordinator coordinator = new GuiClientCoordinator();
 
     public static GuiClientCoordinator getCoordinator(){
@@ -33,7 +36,8 @@ public class GuiClientCoordinator {
 
 
     public void addCloud(CloudBeenImpl cloud) {
-        model.addCloud(cloud);
+        logger.trace("GuiClientCoordinator addCloud() method");
+        clientController.addCloud(cloud);
     }
 
     public void addCloud(String host, int port){

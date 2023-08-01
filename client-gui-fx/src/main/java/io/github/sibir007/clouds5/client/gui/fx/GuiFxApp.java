@@ -1,8 +1,12 @@
 package io.github.sibir007.clouds5.client.gui.fx;
 
+import io.github.sibir007.clouds5.client.core.ClientController;
+import io.github.sibir007.clouds5.client.core.ClientControllerPlug;
 import io.github.sibir007.clouds5.client.core.ClientControllerTask;
 import io.github.sibir007.clouds5.client.core.PostedCloudsClient;
+import io.github.sibir007.clouds5.client.gui.fx.controllers.GuiClientCoordinator;
 import io.github.sibir007.clouds5.client.gui.fx.controllers.MainViewController;
+import io.github.sibir007.clouds5.client.gui.fx.controllers.PostedCloudClientImpl;
 import io.github.sibir007.clouds5.client.gui.fx.model.AccountBeenImpl;
 import io.github.sibir007.clouds5.client.gui.fx.model.CloudBeenImpl;
 import io.github.sibir007.clouds5.client.gui.fx.model.Model;
@@ -34,7 +38,6 @@ public class GuiFxApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        logger.traceEntry("sdfsfsdfsfsf");
         logger.trace("start method");
         URL url = GuiFxApp.class.getResource("mainView.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(url);
@@ -50,8 +53,11 @@ public class GuiFxApp extends Application {
 //        Scene scene = new Scene(mainView);
 //        stage.setScene(scene);
         stage.setTitle("Clouds client");
-        stage.show();
+        GuiClientCoordinator.getCoordinator().setClientController(ClientController.getClientControllerPlug());
+        ClientController.getClientControllerPlug().setCloudsClient(PostedCloudClientImpl.getClient());
         initModel();
+        stage.show();
+
 
 
 
@@ -86,6 +92,7 @@ public class GuiFxApp extends Application {
         logger.trace("stop method");
         Model.getModel().save();
 //        Thread.currentThread().wait(100000000l);
+        ((ClientControllerPlug)ClientController.getClientControllerPlug()).stopController();
         super.stop();
     }
 

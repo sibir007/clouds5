@@ -213,7 +213,7 @@ public class ManageCloudsViewController {
     }
 
     public Cloud deleteCloud(int cloudIndex) {
-        assert Objects.nonNull(cloudIndex) && cloudIndex >= 0 ;
+        assert Objects.nonNull(cloudIndex) && cloudIndex >= 0;
         return clientCoordinator.deleteCLoud(cloudIndex);
     }
 
@@ -224,7 +224,7 @@ public class ManageCloudsViewController {
     }
 
     public void editCloud(int oldCloudIndex) {
-        assert Objects.nonNull(oldCloudIndex) && oldCloudIndex >= 0 ;
+        assert Objects.nonNull(oldCloudIndex) && oldCloudIndex >= 0;
         editCloudWindowController.setOldCloud(oldCloudIndex);
         editCloudWindow.show();
     }

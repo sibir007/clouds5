@@ -81,7 +81,17 @@
             <AppenderRef ref="LogToConsole"/>
             <!--            <AppenderRef ref="LogToFile"/>-->
         </Logger>
-        <Logger name="io.github.sibir007.clouds5.client.gui.fx.controllers.ManageCloudsViewController" level="trace"
+        <Logger name="io.github.sibir007.clouds5.client.gui.fx.controllers.ManageCloudsViewController" level="off"
+                additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+            <!--            <AppenderRef ref="LogToFile"/>-->
+        </Logger>
+        <Logger name="io.github.sibir007.clouds5.client.gui.fx.controllers.PostedCloudClientImpl" level="trace"
+                additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+            <!--            <AppenderRef ref="LogToFile"/>-->
+        </Logger>
+        <Logger name="io.github.sibir007.clouds5.client.core.ClientControllerPlug" level="trace"
                 additivity="false">
             <AppenderRef ref="LogToConsole"/>
             <!--            <AppenderRef ref="LogToFile"/>-->

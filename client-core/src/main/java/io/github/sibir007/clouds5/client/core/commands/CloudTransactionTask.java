@@ -5,6 +5,7 @@ import io.github.sibir007.clouds5.client.core.Cloud;
 import io.github.sibir007.clouds5.client.core.commands.*;
 
 public interface CloudTransactionTask {
+    CommandType commandType();
     static AddCloud ADD_CLOUD(Cloud cloud){return AddCloud.COMMAND(cloud);}
     static NewAccount NEW_ACCOUNT(Cloud cloud, Account account){return NewAccount.COMMAND(cloud, account);}
     static CloseAccount CLOSE_ACCOUNT(Cloud cloud, Account account){return CloseAccount.COMMAND(cloud, account);}
