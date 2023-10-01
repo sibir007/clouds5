@@ -34,7 +34,7 @@ public class TransactionEntityServiceProvider {
 
     private static String gerTransactionEntityServiceName() {
 
-        return TransactionEntitySpProperty.getTransactionsEntityService();
+        return TransactionEntitySpProperty.getSingletonInstance().getTransactionsEntityService();
     }
 
 
