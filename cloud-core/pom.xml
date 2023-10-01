@@ -12,25 +12,18 @@
     <packaging>jar</packaging>
 
     <name>cloud-core</name>
-    <url>http://maven.apache.org</url>
 
     <properties>
     </properties>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>io.github.sibir007.clouds5.client.core</groupId>-->
+<!--            <artifactId>client-core</artifactId>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <groupId>io.github.sibir007.clouds5.core</groupId>
+            <artifactId>client-cloud-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-        </dependency>
-
     </dependencies>
 </project>

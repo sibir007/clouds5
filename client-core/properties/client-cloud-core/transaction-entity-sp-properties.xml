@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<!-- файл для выбора реализации TransactionEntityService:
+на момент написания предполагалось две реализации:
+1. DatabaseWrapperTransactionsEntityServiceImpl.java - реализация через БД
+2. DataAbstractionTransactionsEntityServiceImpl.java - локальная реализация, т.е.
+в виде дата-структуры в памяти.
+key="transactions_entity_service" читается из TransactionEntityServiceProvider на основании
+значение соответственно загружается соответствующая реализация.
+-->
+
+<properties>
+
+  <entry key="transactions_entity_service">DatabaseWrapperTransactionsEntityServiceImpl</entry>
+<!--  <entry key="transactions_entity_service">DataAbstractionTransactionsEntityServiceImpl</entry>-->
+<!--  <entry key="dbms">mysql</entry>-->
+
+
+</properties>

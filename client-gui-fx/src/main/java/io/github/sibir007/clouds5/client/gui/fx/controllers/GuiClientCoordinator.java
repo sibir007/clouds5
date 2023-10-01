@@ -1,11 +1,11 @@
 package io.github.sibir007.clouds5.client.gui.fx.controllers;
 
-import io.github.sibir007.clouds5.client.core.*;
-import io.github.sibir007.clouds5.client.gui.fx.model.AccountBeenImpl;
+//import io.github.sibir007.clouds5.client.gui.fx.model.CloudBeenImpl;
+import io.github.sibir007.clouds5.client.core.controllers.ClientController;
 import io.github.sibir007.clouds5.client.gui.fx.model.CloudBeenImpl;
-import io.github.sibir007.clouds5.client.gui.fx.model.CloudImpl;
 import io.github.sibir007.clouds5.client.gui.fx.model.Model;
-import javafx.collections.ObservableList;
+import io.github.sibir007.clouds5.core.Account;
+import io.github.sibir007.clouds5.core.Cloud;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,9 +31,6 @@ public class GuiClientCoordinator {
     public void setClientController(ClientController clientController) {
         this.clientController = clientController;
     }
-
-
-
 
     public void addCloud(CloudBeenImpl cloud) {
         logger.trace("GuiClientCoordinator addCloud() method");

@@ -10,7 +10,6 @@
     <artifactId>javafx-test4</artifactId>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
     </properties>
     <dependencies>
         <dependency>
@@ -25,22 +24,32 @@
             <groupId>io.github.sibir007.clouds5.client.core</groupId>
             <artifactId>client-core</artifactId>
         </dependency>
-        <!--        <dependency>-->
-<!--            <groupId>io.github.sibir007.clouds5.client.core</groupId>-->
-<!--            <artifactId>client-core</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>io.github.sibir007.clouds5.core</groupId>
+            <artifactId>client-cloud-core</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
 
+        <!--        <dependency>-->
+        <!--            <groupId>org.junit.platform</groupId>-->
+        <!--            <artifactId>junit-platform-surefire-provider</artifactId>-->
+        <!--            <version>1.3.2</version>-->
+        <!--        </dependency>-->
 
     </dependencies>
     <build>
         <plugins>
 <!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <version>3.8.0</version>-->
-<!--                <configuration>-->
-<!--                    <release>11</release>-->
-<!--                </configuration>-->
+<!--                <groupId>org.openjfx</groupId>-->
+<!--                <artifactId>javafx-maven-plugin</artifactId>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <configuration>-->
+<!--                            &lt;!&ndash;                            <mainClass>io.github.sibir007.clouds5.javafx.test3.App</mainClass>&ndash;&gt;-->
+<!--                            <mainClass>io.github.sibir007.clouds5.javafx.test3.App</mainClass>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
 <!--            </plugin>-->
             <plugin>
                 <groupId>org.openjfx</groupId>
@@ -48,16 +57,18 @@
                 <version>0.0.6</version>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running -->
-                        <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
+
                         <configuration>
-<!--                            <mainClass>io.github.sibir007.clouds5.javafx.test3.App</mainClass>-->
+<!--                            <mainClass>io.github.sibir007.clouds5.client.gui.fx.GuiFxApp</mainClass>-->
                             <mainClass>io.github.sibir007.clouds5.javafx.test3.App</mainClass>
+
                         </configuration>
                     </execution>
                 </executions>
+
             </plugin>
+
         </plugins>
     </build>
 </project>

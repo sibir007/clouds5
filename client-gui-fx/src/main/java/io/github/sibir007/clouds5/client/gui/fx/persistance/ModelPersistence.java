@@ -1,6 +1,6 @@
 package io.github.sibir007.clouds5.client.gui.fx.persistance;
 
-import io.github.sibir007.clouds5.client.gui.fx.model.CloudImpl;
+import io.github.sibir007.clouds5.core.CloudImpl;
 
 import java.util.ArrayList;
 

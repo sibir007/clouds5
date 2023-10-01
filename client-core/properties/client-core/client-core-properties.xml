@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<!-- файл настроек для mysql
+подтягивается в зависимости от настроек в  mysql-db-properties.xml
+-->
+
+<properties>
+
+  <entry key="transaction_entity_service_impl">DatabaseWrapperTransactionsEntityServiceImpl</entry>
+</properties>

@@ -1,7 +1,7 @@
 package io.github.sibir007.clouds5.client.gui.fx.controllers;
 
-import io.github.sibir007.clouds5.client.core.Account;
-import io.github.sibir007.clouds5.client.core.Cloud;
+import io.github.sibir007.clouds5.core.Account;
+import io.github.sibir007.clouds5.core.Cloud;
 import io.github.sibir007.clouds5.client.gui.fx.GuiFxApp;
 import io.github.sibir007.clouds5.client.gui.fx.model.AccountBeenImpl;
 import io.github.sibir007.clouds5.client.gui.fx.model.CloudBeenImpl;

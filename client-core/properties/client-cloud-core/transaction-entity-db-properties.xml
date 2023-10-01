@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<!-- файл для определения тиба базы данных key="dbms":
+mysql, sqlite и пр., на основании чего производится
+выбор соответствующего класса реализации TransactionEntityServiceDBConnectionProvider.
+Настройки для соответствующего TransactionEntityServiceDBConnectionProvider находятся
+соответственно:
+sqlite - sqlite-db-properties.xml,
+mysql - mysql-db-properties.xml
+и т.п.
+-->
+
+<properties>
+
+<!--  <entry key="dbms">mysql</entry>-->
+  <entry key="dbms">sqlite</entry>
+  <entry key="database_name">transaction_entity</entry>
+  <entry key="mysql_file_property">mysql-db-properties.xml</entry>
+  <entry key="sqlite_file_property">sqlite-db-properties.xml</entry>
+
+</properties>

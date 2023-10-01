@@ -1,0 +1,2 @@
+io.github.sibir007.clouds5.core.services.transactionsentity.DataAbstractionTransactionsEntityServiceImpl
+io.github.sibir007.clouds5.core.services.transactionsentity.db.DatabaseWrapperTransactionsEntityServiceImpl

@@ -1,8 +1,7 @@
 package io.github.sibir007.clouds5.client.gui.fx.controllers;
 
-import io.github.sibir007.clouds5.client.core.Cloud;
-import io.github.sibir007.clouds5.client.core.util.Util;
-import io.github.sibir007.clouds5.client.gui.fx.model.CloudBeenImpl;
+import io.github.sibir007.clouds5.core.Cloud;
+import io.github.sibir007.clouds5.client.gui.fx.util.Util;
 import io.github.sibir007.clouds5.client.gui.fx.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,14 +1,11 @@
 package io.github.sibir007.clouds5.client.gui.fx.controllers;
 
-import io.github.sibir007.clouds5.client.core.util.Util;
-import io.github.sibir007.clouds5.client.gui.fx.model.CloudBeenImpl;
+import io.github.sibir007.clouds5.client.gui.fx.util.Util;
 import io.github.sibir007.clouds5.client.gui.fx.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class AddCloudWindowController {
     private final String EMPTY_TEXT_FOR_LABEL = "";

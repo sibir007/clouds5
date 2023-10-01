@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <File name="LogToFile" fileName="logs/javafx-test4/app.log">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+
+        <RollingFile name="LogToRollingFile"
+                     filePattern="logs/javafx-test4//$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>[%p] %d %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+        </RollingFile>
+
+        <!--        RollingRandomAccessFileAppender – Similar to the RollingFileAppender, but faster.-->
+        <!--        <RollingRandomAccessFile name="LogToRollingRandomAccessFile" fileName="logs/app.log"-->
+        <!--                                 filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">-->
+        <!--            <PatternLayout>-->
+        <!--                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>-->
+        <!--            </PatternLayout>-->
+        <!--            <Policies>-->
+        <!--                <TimeBasedTriggeringPolicy/>-->
+        <!--                <SizeBasedTriggeringPolicy size="1 MB"/>-->
+        <!--            </Policies>-->
+        <!--            <DefaultRolloverStrategy max="10"/>-->
+        <!--        </RollingRandomAccessFile>-->
+
+
+        <!--        SMTPAppender – Need javax.mail to send email.-->
+        <!--        <SMTP name="LogToMail" subject="Error Log From Log4j"-->
+        <!--              from="from@DOMAIN"-->
+        <!--              to="to@DOMAIN"-->
+        <!--              smtpHost="smtp.mailgun.org"-->
+        <!--              smtpPort="25"-->
+        <!--              smtpUsername="abc"-->
+        <!--              smtpPassword="123"-->
+        <!--              bufferSize="100">-->
+        <!--        </SMTP>-->
+
+
+        <!--        <RollingRandomAccessFile name="LogToRollingRandomAccessFile" fileName="logs/app.log"-->
+        <!--                                 filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">-->
+        <!--            <PatternLayout>-->
+        <!--                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>-->
+        <!--            </PatternLayout>-->
+        <!--            <Policies>-->
+        <!--                <TimeBasedTriggeringPolicy/>-->
+        <!--                <SizeBasedTriggeringPolicy size="1 MB"/>-->
+        <!--            </Policies>-->
+        <!--            <DefaultRolloverStrategy max="10"/>-->
+        <!--        </RollingRandomAccessFile>-->
+
+        <!--        AsyncAppender – Make appender asynchronous. Increase performance.-->
+        <!--        <Async name="Async">-->
+        <!--            &lt;!&ndash; reference to other appenders &ndash;&gt;-->
+        <!--            <AppenderRef ref="LogToRollingRandomAccessFile"/>-->
+        <!--        </Async>-->
+    </Appenders>
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="LogToRollingFile"/>
+        </Root>
+        <!--        <Logger name="io.github.sibir007.clouds5.client.gui.fx.GuiFxApp" level="trace"-->
+        <!--                additivity="false">-->
+        <!--            <AppenderRef ref="LogToConsole"/>-->
+        <!--            &lt;!&ndash;            <AppenderRef ref="LogToFile"/>&ndash;&gt;-->
+        <!--        </Logger>-->
+        <Logger name="io.github.sibir007.clouds5.testjunit" level="trace"
+                additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+            <!--            <AppenderRef ref="LogToFile"/>-->
+        </Logger>
+        <!--        <Logger name="io.github.sibir007.clouds5.client.gui.fx.controllers.ManageCloudsViewController" level="off"-->
+        <!--                additivity="false">-->
+        <!--            <AppenderRef ref="LogToConsole"/>-->
+        <!--            &lt;!&ndash;            <AppenderRef ref="LogToFile"/>&ndash;&gt;-->
+        <!--        </Logger>-->
+        <!--        <Logger name="io.github.sibir007.clouds5.client.gui.fx.controllers.PostedCloudClientImpl" level="trace"-->
+        <!--                additivity="false">-->
+        <!--            <AppenderRef ref="LogToConsole"/>-->
+        <!--            &lt;!&ndash;            <AppenderRef ref="LogToFile"/>&ndash;&gt;-->
+        <!--        </Logger>-->
+        <!--        <Logger name="io.github.sibir007.clouds5.client.core.controllers.ClientControllerPlug" level="trace"-->
+        <!--                additivity="false">-->
+        <!--            <AppenderRef ref="LogToConsole"/>-->
+        <!--            <AppenderRef ref="LogToFile"/>-->
+        <!--        </Logger>-->
+        <!--        <Logger name="io.github.sibir007.clouds5.client.gui.fx.GuiFxApp" level="trace">-->
+        <!--&lt;!&ndash;                        <AppenderRef ref="LogToConsole"/>&ndash;&gt;-->
+        <!--        </Logger>-->
+        <!--        <Logger name="io.github.sibir007.clouds5.client.gui.fx.controllers" level="trace" additivity="false">-->
+        <!--            <AppenderRef ref="LogToConsole"/>-->
+        <!--            <AppenderRef ref="LogToFile" />-->
+        <!--        </Logger>-->
+
+    </Loggers>
+</Configuration>
+        <!--All < Trace < Debug < Info < Warn < Error < Fatal < Off-->

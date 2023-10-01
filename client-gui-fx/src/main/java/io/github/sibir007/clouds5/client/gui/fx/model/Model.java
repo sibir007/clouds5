@@ -1,6 +1,6 @@
 package io.github.sibir007.clouds5.client.gui.fx.model;
 
-import io.github.sibir007.clouds5.client.core.Cloud;
+import io.github.sibir007.clouds5.core.Cloud;
 import io.github.sibir007.clouds5.client.gui.fx.persistance.ModelPersistence;
 import io.github.sibir007.clouds5.client.gui.fx.util.BeenModelConverter;
 import javafx.collections.ObservableList;

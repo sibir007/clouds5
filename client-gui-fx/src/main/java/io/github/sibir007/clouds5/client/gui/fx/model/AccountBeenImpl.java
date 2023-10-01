@@ -1,9 +1,8 @@
 package io.github.sibir007.clouds5.client.gui.fx.model;
 
-import io.github.sibir007.clouds5.client.core.Account;
+import io.github.sibir007.clouds5.core.Account;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 public class AccountBeenImpl implements Account {

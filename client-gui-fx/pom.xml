@@ -9,28 +9,14 @@
 
     <groupId>io.github.sibir007.clouds5.client.gui.fx</groupId>
     <artifactId>client-gui-fx</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
 
 
     <properties>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-controls -->
         <dependency>
@@ -45,41 +31,43 @@
             <groupId>io.github.sibir007.clouds5.client.core</groupId>
             <artifactId>client-core</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.github.sibir007.clouds5.cloud.core</groupId>-->
+<!--            <artifactId>cloud-core</artifactId>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>io.github.sibir007.clouds5.cloud.core</groupId>
-            <artifactId>cloud-core</artifactId>
+            <groupId>io.github.sibir007.clouds5.core</groupId>
+            <artifactId>client-cloud-core</artifactId>
         </dependency>
-
-
     </dependencies>
 
-<build>
-    <plugins>
-<!--        <plugin>-->
-<!--            <groupId>org.apache.maven.plugins</groupId>-->
-<!--            <artifactId>maven-compiler-plugin</artifactId>-->
-<!--            <version>3.8.0</version>-->
-<!--            <configuration>-->
-<!--                <release>11</release>-->
-<!--            </configuration>-->
-<!--        </plugin>-->
-        <plugin>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-maven-plugin</artifactId>
-            <version>0.0.6</version>
-            <executions>
-                <execution>
-                    <id>default-cli</id>
+    <build>
+        <plugins>
+            <!--        <plugin>-->
+            <!--            <groupId>org.apache.maven.plugins</groupId>-->
+            <!--            <artifactId>maven-compiler-plugin</artifactId>-->
+            <!--            <version>3.8.0</version>-->
+            <!--            <configuration>-->
+            <!--                <release>11</release>-->
+            <!--            </configuration>-->
+            <!--        </plugin>-->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.6</version>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
 
-                    <configuration>
-                        <mainClass>io.github.sibir007.clouds5.client.gui.fx.GuiFxApp</mainClass>
+                        <configuration>
+                            <mainClass>io.github.sibir007.clouds5.client.gui.fx.GuiFxApp</mainClass>
 
-                    </configuration>
-                </execution>
-            </executions>
+                        </configuration>
+                    </execution>
+                </executions>
 
-        </plugin>
-    </plugins>
-</build>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

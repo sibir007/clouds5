@@ -1,8 +1,7 @@
 package io.github.sibir007.clouds5.client.gui.fx;
 
-import io.github.sibir007.clouds5.client.core.ClientController;
-import io.github.sibir007.clouds5.client.core.ClientControllerPlug;
-import io.github.sibir007.clouds5.client.core.ClientControllerTask;
+import io.github.sibir007.clouds5.client.core.controllers.ClientController;
+import io.github.sibir007.clouds5.client.core.controllers.ClientControllerPlug;
 import io.github.sibir007.clouds5.client.core.PostedCloudsClient;
 import io.github.sibir007.clouds5.client.gui.fx.controllers.GuiClientCoordinator;
 import io.github.sibir007.clouds5.client.gui.fx.controllers.MainViewController;
@@ -21,19 +20,18 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 
 public class GuiFxApp extends Application {
     private static Logger logger = LogManager.getLogger();
 
 
-    private ClientControllerTask clientController;
     private PostedCloudsClient guiCloudsClient;
     private Scene scene;
 
     @Override
     public void init() throws Exception {
         logger.trace("init method");
-//        clientController = new ClientControllerTask();
     }
 
     @Override
@@ -53,8 +51,11 @@ public class GuiFxApp extends Application {
 //        Scene scene = new Scene(mainView);
 //        stage.setScene(scene);
         stage.setTitle("Clouds client");
+        System.out.println(getClass().getClassLoader().getResource("log4j2.xml"));
         GuiClientCoordinator.getCoordinator().setClientController(ClientController.getClientControllerPlug());
-        ClientController.getClientControllerPlug().setCloudsClient(PostedCloudClientImpl.getClient());
+        PostedCloudsClient cloudsClient = PostedCloudClientImpl.getClient();
+        ClientController clientController1 = ClientController.getClientControllerPlug();
+        clientController1.setCloudsClient(cloudsClient);
         initModel();
         stage.show();
 

@@ -1,11 +1,11 @@
 package io.github.sibir007.clouds5.client.gui.fx.util;
 
-import io.github.sibir007.clouds5.client.core.Account;
-import io.github.sibir007.clouds5.client.core.Cloud;
+import io.github.sibir007.clouds5.core.Account;
+import io.github.sibir007.clouds5.core.Cloud;
 import io.github.sibir007.clouds5.client.gui.fx.model.AccountBeenImpl;
 import io.github.sibir007.clouds5.client.gui.fx.model.CloudBeenImpl;
-import io.github.sibir007.clouds5.client.gui.fx.model.AccountImpl;
-import io.github.sibir007.clouds5.client.gui.fx.model.CloudImpl;
+import io.github.sibir007.clouds5.core.AccountImpl;
+import io.github.sibir007.clouds5.core.CloudImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;

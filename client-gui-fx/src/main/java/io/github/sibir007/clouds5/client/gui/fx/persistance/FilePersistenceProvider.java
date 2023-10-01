@@ -1,6 +1,6 @@
 package io.github.sibir007.clouds5.client.gui.fx.persistance;
 
-import io.github.sibir007.clouds5.client.gui.fx.model.CloudImpl;
+import io.github.sibir007.clouds5.core.CloudImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
