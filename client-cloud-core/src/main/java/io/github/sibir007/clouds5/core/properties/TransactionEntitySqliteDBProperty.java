@@ -16,7 +16,7 @@ import java.util.Properties;
 public class TransactionEntitySqliteDBProperty extends BaseProperty {
     private static Logger logger = LogManager.getLogger();
 
-    private static final String FILE_PROPERTY_NAME = "properties/client-cloud-core/sqlite-db-properties.xml";
+    private static final String FILE_PROPERTY_NAME = "sqlite-db-properties.xml";
 
     private static final TransactionEntitySqliteDBProperty property = new TransactionEntitySqliteDBProperty();
 

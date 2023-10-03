@@ -13,7 +13,7 @@ import java.util.Properties;
 public class TransactionEntitySpProperty extends BaseProperty{
     private static Logger logger = LogManager.getLogger();
 
-    private static final String FILE_PROPERTY_NAME = "properties/client-cloud-core/transaction-entity-sp-properties.xml";
+    private static final String FILE_PROPERTY_NAME = "transaction-entity-sp-properties.xml";
 
     private static final TransactionEntitySpProperty property = new TransactionEntitySpProperty();
 

@@ -13,18 +13,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-// TODO: 02.10.2023 остановился здесь. Делать sql для инициализации bd
-class DatabaseWrapperTransactionsEntityServiceImplTest  extends BaseTestCase {
+// TODO: 03.10.2023 остановился здесь. Делать sql для инициализации bd
+class DatabaseWrapperTransactionsEntityServiceImplTest extends BaseTestCase {
     private DatabaseWrapperTransactionsEntityServiceImpl entityService;
     private TransactionEntityServiceDBConnectionProvider connectionProvider;
 
     @BeforeEach
     void setUp() {
         entityService = new DatabaseWrapperTransactionsEntityServiceImpl();
-        TransactionEntityDBProperty dbProp = mock(TransactionEntityDBProperty.class);
-        TransactionEntitySqliteDBProperty sqliteDbProp = mock(TransactionEntitySqliteDBProperty.class);
-        when(sqliteDbProp.getDbms()).thenReturn("db/test/sqlite_test.db");
-        connectionProvider = new SqliteTransactionEntityServiceDBConnectionProvider(dbProp, sqliteDbProp);
+        assertEquals("sqlite", TransactionEntityDBProperty.getSingletonInstance().getDbms(), () -> "db should be sqlite");
+
     }
 
     @AfterEach
@@ -33,7 +31,7 @@ class DatabaseWrapperTransactionsEntityServiceImplTest  extends BaseTestCase {
 
     @DisplayName("EntityServiсе should ...")
     @Test
-    void entityServiceShould(){
-
+    void entityServiceShould() {
+        entityService.createNewTable();
     }
 }

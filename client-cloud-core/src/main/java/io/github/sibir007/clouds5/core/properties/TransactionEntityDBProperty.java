@@ -12,7 +12,7 @@ import java.util.Properties;
 public class TransactionEntityDBProperty extends BaseProperty{
     private static Logger logger = LogManager.getLogger();
 
-    private static final String FILE_PROPERTY_NAME = "properties/client-cloud-core/transaction-entity-db-properties.xml";
+    private static final String FILE_PROPERTY_NAME = "transaction-entity-db-properties.xml";
     private static final TransactionEntityDBProperty property = new TransactionEntityDBProperty();
 
     public static TransactionEntityDBProperty getSingletonInstance(){

@@ -14,7 +14,9 @@ mysql - mysql-db-properties.xml
 <properties>
 
   <entry key="dbms">sqlite</entry>
-  <entry key="database_name">transaction_entity</entry>
+<!--  <entry key="dbms">mysql</entry>-->
+
+  <entry key="database_name">test-transaction_entity</entry>
   <entry key="mysql_file_property">mysql-db-properties.xml</entry>
   <entry key="sqlite_file_property">sqlite-db-properties.xml</entry>
 

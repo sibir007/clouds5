@@ -9,35 +9,42 @@ import io.github.sibir007.clouds5.core.transactions.response.TransactionResponse
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class DatabaseWrapperTransactionsEntityServiceImpl implements TransactionEntityService {
     private static Logger logger = LogManager.getLogger();
     private TransactionEntityServiceDBConnectionProvider connectionProvider;
 
     private static TransactionEntityService transactionEntityService;
-    public static TransactionEntityService getTransactionEntityServiceSingleton(){
-        if (transactionEntityService == null){
+
+    public static TransactionEntityService getTransactionEntityServiceSingleton() {
+        if (transactionEntityService == null) {
             transactionEntityService = new DatabaseWrapperTransactionsEntityServiceImpl();
         }
         return transactionEntityService;
     }
 
-    protected DatabaseWrapperTransactionsEntityServiceImpl(){
+    protected DatabaseWrapperTransactionsEntityServiceImpl() {
         String dbms = TransactionEntityDBProperty.getSingletonInstance().getDbms();
-        if(dbms.equals("sqlite")){
+        if (dbms.equals("sqlite")) {
 
             logger.info("sqlite selected");
             connectionProvider = SqliteTransactionEntityServiceDBConnectionProvider.getSingleton();
-        } else if (dbms.equals("mysql")){
+        } else if (dbms.equals("mysql")) {
             logger.info("mysql selected");
             connectionProvider = MysqlTransactionEntityServiceDBConnectionProvider.getSingleton();
         } else {
             throw new RuntimeException("not supported database management system");
         }
     }
-    protected void setTransactionEntityServiceDBConnectionProvider(TransactionEntityServiceDBConnectionProvider connectionProvider){
+
+
+
+    protected void setTransactionEntityServiceDBConnectionProvider(TransactionEntityServiceDBConnectionProvider connectionProvider) {
         this.connectionProvider = connectionProvider;
     }
-
 
 
     @Override
@@ -65,5 +72,24 @@ public class DatabaseWrapperTransactionsEntityServiceImpl implements Transaction
     @Override
     public TransactionResponse getTransactionResponse() {
         return null;
+    }
+
+    //fore testing only
+    protected void createNewTable() {
+        // SQL statement for creating a new table
+        String sql = "CREATE TABLE IF NOT EXISTS warehouses (\n"
+                + "	id integer PRIMARY KEY,\n"
+                + "	name text NOT NULL,\n"
+                + "	capacity real\n"
+                + ");";
+
+        try (Connection conn = connectionProvider.getConnection();
+             Statement stmt = conn.createStatement()) {
+            // create a new table
+            stmt.execute(sql);
+            logger.info("table created");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

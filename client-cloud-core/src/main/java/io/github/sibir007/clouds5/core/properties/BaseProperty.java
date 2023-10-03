@@ -3,23 +3,29 @@ package io.github.sibir007.clouds5.core.properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public abstract class BaseProperty {
+    private static String propertyFilesDir = "properties/client-cloud-core/";
+    public static String getPropertyFilesDir(){
+        return propertyFilesDir;
+    }
+
+    public static void setPropertyFilesDir(String newPropertyFilesDir){
+        propertyFilesDir = newPropertyFilesDir;
+    }
     private static Logger logger = LogManager.getLogger();
 
     protected Properties prop;
 
-    protected BaseProperty(String filePropertyPath){
+    protected BaseProperty(String propertyFileName){
         prop = new Properties();
         logger.info("root dir" + new File(".").getAbsolutePath());
+        String propertyFilePath = propertyFilesDir + propertyFileName;
 
-        try (FileInputStream fis = new FileInputStream(filePropertyPath);){
-            prop.loadFromXML(fis);
+        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(propertyFilePath);){
+            prop.loadFromXML(is);
 
         } catch (FileNotFoundException e) {
             logger.error("not file found" + new File(".").getAbsolutePath());

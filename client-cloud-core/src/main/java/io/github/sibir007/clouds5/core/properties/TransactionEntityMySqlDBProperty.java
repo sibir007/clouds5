@@ -16,7 +16,7 @@ import java.util.Properties;
 public class TransactionEntityMySqlDBProperty extends BaseProperty{
     private static Logger logger = LogManager.getLogger();
 
-    private static final String FILE_PROPERTY_NAME = "properties/client-cloud-core/mysql-db-properties.xml";
+    private static final String FILE_PROPERTY_NAME = "mysql-db-properties.xml";
 
     private static final TransactionEntityMySqlDBProperty property = new TransactionEntityMySqlDBProperty();
 
