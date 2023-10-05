@@ -17,7 +17,7 @@ public abstract class AbstractTransactionEntityServiceDBConnectionProvider imple
     public Connection getConnection() {
         String url = getUrl();
         Connection connection = getConnectionSpecific(url);
-        logger.info("Connection to SQLite has been established");
+        logger.info("Connection to " + url + " has been established");
         performSpecificDBImplementationAction(connection);
         return connection;
     }

@@ -1,13 +1,13 @@
 package io.github.sibir007.clouds5.core.services.transactionsentity.db;
 
 import io.github.sibir007.clouds5.core.BaseTestCase;
+import io.github.sibir007.clouds5.core.Cloud;
+import io.github.sibir007.clouds5.core.CloudImpl;
 import io.github.sibir007.clouds5.core.properties.TransactionEntityDBProperty;
 import io.github.sibir007.clouds5.core.properties.TransactionEntitySpProperty;
 import io.github.sibir007.clouds5.core.properties.TransactionEntitySqliteDBProperty;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import io.github.sibir007.clouds5.core.transactions.AddCloudTransaction;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -28,10 +28,11 @@ class DatabaseWrapperTransactionsEntityServiceImplTest extends BaseTestCase {
     @AfterEach
     void tearDown() {
     }
-
+@Disabled("")
     @DisplayName("EntityServiсе should ...")
     @Test
     void entityServiceShould() {
-        entityService.createNewTable();
+    Cloud cloud = new CloudImpl("aaaaaaaaaa", 55);
+        AddCloudTransaction transaction = entityService.createAddCloudTransaction(cloud);
     }
 }

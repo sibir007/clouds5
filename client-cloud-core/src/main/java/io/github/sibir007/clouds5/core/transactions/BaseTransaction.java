@@ -1,8 +1,5 @@
 package io.github.sibir007.clouds5.core.transactions;
 
-import java.util.List;
-import java.util.UUID;
-
 public abstract class BaseTransaction implements Transaction {
 
 
@@ -15,6 +12,7 @@ public abstract class BaseTransaction implements Transaction {
     private final TransactionType type;
     private final TransactionCategory category;
 
+    private final String transactionResponseId;
 
     protected BaseTransaction(String id,
                               String rootId,
@@ -23,7 +21,8 @@ public abstract class BaseTransaction implements Transaction {
                               Direction direction,
                               Status status,
                               TransactionType type,
-                              TransactionCategory category) {
+                              TransactionCategory category,
+                              String transactionResponseId) {
         this.id = id;
         this.rootId = rootId;
         this.parentId = parentId;
@@ -32,6 +31,7 @@ public abstract class BaseTransaction implements Transaction {
         this.status = status;
         this.type = type;
         this.category = category;
+        this.transactionResponseId = transactionResponseId;
     }
 
 
@@ -73,5 +73,7 @@ public abstract class BaseTransaction implements Transaction {
         return category;
     }
 
-
+    public String getTransactionResponseId(){
+        return transactionResponseId;
+    }
 }

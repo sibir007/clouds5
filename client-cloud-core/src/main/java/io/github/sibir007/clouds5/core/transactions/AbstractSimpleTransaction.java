@@ -1,13 +1,12 @@
 package io.github.sibir007.clouds5.core.transactions;
 
+import io.github.sibir007.clouds5.core.transactions.AutorisedTransaction;
+import io.github.sibir007.clouds5.core.transactions.BaseTransaction;
+
 public abstract class AbstractSimpleTransaction extends BaseTransaction implements SimpleTransaction {
-    protected final static String NOUSED_NAME = "UNKNOWN";
-    protected final static String NOUSED_PASSWORD = "UNKNOWN";
-    private final String host;
-    private final int port;
-    private final String userName;
-    private final String password;
-    private final String responseId;
+
+private final String host;
+private final int port;
 
 
     protected AbstractSimpleTransaction(String id,
@@ -17,17 +16,13 @@ public abstract class AbstractSimpleTransaction extends BaseTransaction implemen
                                         Status status,
                                         TransactionType type,
                                         TransactionCategory category,
+                                        String responseId,
                                         String host,
-                                        int port,
-                                        String userName,
-                                        String password,
-                                        String responseId) {
-        super(id, rootId, parentId, Complexity.SIMPLE, direction, status, type, category);
+                                        int port) {
+        super(id, rootId, parentId, Complexity.SIMPLE, direction, status, type, category, responseId);
+
         this.host = host;
         this.port = port;
-        this.userName = userName;
-        this.password = password;
-        this.responseId = responseId;
     }
 
     @Override
@@ -38,20 +33,5 @@ public abstract class AbstractSimpleTransaction extends BaseTransaction implemen
     @Override
     public int getPort() {
         return port;
-    }
-
-    @Override
-    public String getUserName() {
-        return userName;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getTransactionResponseId() {
-        return responseId;
     }
 }

@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -41,22 +42,23 @@ public class DatabaseWrapperTransactionsEntityServiceImpl implements Transaction
     }
 
 
-
-    protected void setTransactionEntityServiceDBConnectionProvider(TransactionEntityServiceDBConnectionProvider connectionProvider) {
-        this.connectionProvider = connectionProvider;
-    }
-
-
+    // TODO: 05.10.2023 остановился здесь, доделывать создание  AddCloudTransaction
     @Override
     public AddCloudTransaction createAddCloudTransaction(Cloud cloud) {
+        try (Connection connection = connectionProvider.getConnection();
+             ){
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return new AddCloudTransaction("34242424",
                 "sdlkfjsl",
                 "dkfjdljfdlf",
                 Transaction.Direction.IN,
                 Transaction.Status.NEW,
                 "dlkfjlsdfj",
-                59,
-                "dsjflsjfls");
+                "sdkfjslkdfjs",
+                59);
     }
 
     @Override

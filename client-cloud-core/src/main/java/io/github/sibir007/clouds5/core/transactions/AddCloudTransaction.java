@@ -7,9 +7,9 @@ public class AddCloudTransaction extends AbstractSimpleTransaction {
                                String parentId,
                                Direction direction,
                                Status status,
+                               String responseId,
                                String host,
-                               int port,
-                               String responseId) {
+                               int port) {
         super(id,
                 rootId,
                 parentId,
@@ -17,10 +17,8 @@ public class AddCloudTransaction extends AbstractSimpleTransaction {
                 status,
                 TransactionType.ADD_CLOUD,
                 TransactionCategory.CLIENT,
+                responseId,
                 host,
-                port,
-                AbstractSimpleTransaction.NOUSED_NAME,
-                AbstractSimpleTransaction.NOUSED_PASSWORD,
-                responseId);
+                port);
     }
 }

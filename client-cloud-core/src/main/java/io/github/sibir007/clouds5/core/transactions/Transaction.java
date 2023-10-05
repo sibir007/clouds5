@@ -7,42 +7,103 @@ public interface Transaction {
     }
 
     String getId();
+
     String getRootId();
+
     String getParentId();
+
     Complexity getComplexity();
+
     Direction getDirection();
+
     Status getStatus();
+
     TransactionType getType();
+
     TransactionCategory getCategory();
+    String getTransactionResponseId();
 
+    public enum Direction implements TransactionsTypes{
+        IN(1),
+        OUT(2);
+        private int dbId;
 
-    public enum Direction{
-        IN,
-        OUT
+        private Direction(int dbId){
+            this.dbId = dbId;
+        }
+
+        @Override
+        public int getDbId() {
+            return dbId;
+        }
     }
 
 
-    public enum Status {
-        NEW,
-        PROCESSING,
-        OK,
-        REJECTED,
-        NO_CONNECTION,
-        FILED,
-        EXCEPTION
+    public enum Status implements TransactionsTypes{
+        NEW(1),
+        PROCESSING(2),
+        OK(3),
+        REJECTED(4),
+        NO_CONNECTION(5),
+        FILED(6),
+        EXCEPTION(7);
+        private int dbId;
+
+        private Status(int dbId){
+            this.dbId = dbId;
+        }
+
+        @Override
+        public int getDbId() {
+            return dbId;
+        }
     }
 
-    public enum TransactionType {
-        ADD_CLOUD, ADD_ACCOUNT,
+    public enum TransactionType implements TransactionsTypes{
+        ADD_CLOUD(1),
+        ADD_ACCOUNT(2);
+        private int dbId;
+        private TransactionType(int dbId){
+            this.dbId = dbId;
+        }
+
+        @Override
+        public int getDbId() {
+            return dbId;
+        }
     }
 
-    public enum TransactionCategory {
-        CLIENT,
-        AGENT
+    public enum TransactionCategory  implements TransactionsTypes{
+
+        CLIENT(1),
+        AGENT(2);
+
+        private int dbId;
+        private TransactionCategory(int dbId){
+            this.dbId = dbId;
+        }
+
+        @Override
+        public int getDbId() {
+            return dbId;
+        }
     }
 
-    public enum Complexity {
-        SIMPLE,
-        COMPOSITE
+    public enum Complexity implements TransactionsTypes {
+        SIMPLE(1),
+        COMPOSITE(2);
+        private int dbId;
+        private Complexity(int dbId){
+            this.dbId = dbId;
+        }
+
+        @Override
+        public int getDbId() {
+            return dbId;
+        }
+    }
+
+    public interface TransactionsTypes {
+        int getDbId();
     }
 }

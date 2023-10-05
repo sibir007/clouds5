@@ -21,8 +21,9 @@ public abstract class BaseProperty {
 
     protected BaseProperty(String propertyFileName){
         prop = new Properties();
-        logger.info("root dir" + new File(".").getAbsolutePath());
         String propertyFilePath = propertyFilesDir + propertyFileName;
+        logger.info("root dir" + Thread.currentThread().getContextClassLoader().getResource(propertyFilePath).getPath());
+
 
         try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(propertyFilePath);){
             prop.loadFromXML(is);
