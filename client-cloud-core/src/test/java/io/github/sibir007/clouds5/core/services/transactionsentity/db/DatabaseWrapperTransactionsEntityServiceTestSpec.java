@@ -26,7 +26,12 @@ class DatabaseWrapperTransactionsEntityServiceTestSpec extends BaseTestCase {
     @DisplayName("createAddCloudTransaction(Cloud cloud) should return AddCloudTransaction")
     void createAddCloudTransactionTest(){
         Cloud cloud = new CloudImpl("10.10.10.10", 4);
-        AddCloudTransaction transaction = transactionsEntityService.createAddCloudTransaction(cloud);
+        AddCloudTransaction transaction = null;
+        try {
+            transaction = transactionsEntityService.createAddCloudTransaction(cloud);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         assertTrue(transaction instanceof AddCloudTransaction);
     }
 //    @Test

@@ -28,11 +28,15 @@ class DatabaseWrapperTransactionsEntityServiceImplTest extends BaseTestCase {
     @AfterEach
     void tearDown() {
     }
-@Disabled("")
+//@Disabled("")
     @DisplayName("EntityServiсе should ...")
     @Test
-    void entityServiceShould() {
+    void entityServiceShould(){
     Cloud cloud = new CloudImpl("aaaaaaaaaa", 55);
+    try {
         AddCloudTransaction transaction = entityService.createAddCloudTransaction(cloud);
+    } catch (Exception e) {
+        throw new RuntimeException(e);
     }
+}
 }
