@@ -17,7 +17,7 @@ public enum SQL_STOCK {
             "FOREIGN KEY(type) REFERENCES transaction_type(type_id)," +
             "FOREIGN KEY(category) REFERENCES transaction_category(category_id)," +
             "FOREIGN KEY(complexity) REFERENCES transaction_complexity(complexity_id)" +
-            ")"),
+            ");"),
     INSERT_INTO_base_transaction("INSERT INTO base_transaction (" +
             "id," + //String 1
             "root_id," + //String 2
@@ -28,19 +28,31 @@ public enum SQL_STOCK {
             "type, " + //int 7
             "category, " + //int 8
             "response_id) " + //String 3
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"),
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"),
     INSERT_INTO_abstract_simple_transaction("INSERT INTO abstract_simple_transaction (" +
             "id, " +
             "host, " +
             "port) " +
-            "VALUES (?, ?, ?)"),
-    INSERT_INTO_add_cloud_transaction("INSERT INTO add_cloud_transaction (id) VALUES (?)");
-
+            "VALUES (?, ?, ?);"),
+    INSERT_INTO_add_cloud_transaction("INSERT INTO add_cloud_transaction (id) VALUES (?)"),
+    SELECT_ALL_FROM_TABLE_WHERE_ID("SELECT * FROM ? WHERE ? = ?;"),
+    GET_TRANSACTION_TYPE("SELECT" +
+            "                 transaction_type.type" +
+            "              FROM" +
+            "                 base_transaction " +
+            "             INNER JOIN" +
+            "                 transaction_type" +
+            "              ON" +
+            "                 transaction_type.type_id = base_transaction.type" +
+            "             WHERE" +
+            "                 base_transaction.id = ?;");
     private final String sql;
-    private SQL_STOCK(String sql){
+
+    private SQL_STOCK(String sql) {
         this.sql = sql;
     }
-    public String getSql(){
+
+    public String getSql() {
         return sql;
     }
 }

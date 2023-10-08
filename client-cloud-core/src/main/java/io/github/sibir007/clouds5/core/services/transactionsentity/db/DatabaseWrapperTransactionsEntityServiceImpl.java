@@ -4,16 +4,14 @@ import io.github.sibir007.clouds5.core.Cloud;
 import io.github.sibir007.clouds5.core.services.spi.TransactionEntityService;
 import io.github.sibir007.clouds5.core.properties.TransactionEntityDBProperty;
 import io.github.sibir007.clouds5.core.transactions.AddCloudTransaction;
+import io.github.sibir007.clouds5.core.transactions.DbTablesDirectory;
 import io.github.sibir007.clouds5.core.transactions.SQL_STOCK;
 import io.github.sibir007.clouds5.core.transactions.Transaction;
 import io.github.sibir007.clouds5.core.transactions.response.TransactionResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DatabaseWrapperTransactionsEntityServiceImpl implements TransactionEntityService {
     private static Logger logger = LogManager.getLogger();
@@ -63,9 +61,9 @@ public class DatabaseWrapperTransactionsEntityServiceImpl implements Transaction
              PreparedStatement preparedINSERT_INTO_base_transactionStatement = connection.prepareStatement(SQL_STOCK.INSERT_INTO_base_transaction.getSql());
              PreparedStatement preparedINSERT_INTO_abstract_simple_transactionStatement = connection.prepareStatement(SQL_STOCK.INSERT_INTO_abstract_simple_transaction.getSql());
              PreparedStatement preparedINSERT_INTO_add_cloud_transactionStatement = connection.prepareStatement(SQL_STOCK.INSERT_INTO_add_cloud_transaction.getSql());
-             ) {
+        ) {
             try {
-                logger.trace("createAddCloudTransaction(Cloud cloud) try block");
+                logger.trace("createAddCloudTransaction(Cloud cloud) in try block");
                 connection.setAutoCommit(false);
                 prepareINSERT_INTO_base_transactionStatement(preparedINSERT_INTO_base_transactionStatement, transaction);
                 preparedINSERT_INTO_base_transactionStatement.execute();
@@ -74,6 +72,8 @@ public class DatabaseWrapperTransactionsEntityServiceImpl implements Transaction
                 preparedINSERT_INTO_add_cloud_transactionStatement.setString(1, transaction.getId());
                 preparedINSERT_INTO_add_cloud_transactionStatement.execute();
                 connection.commit();
+                logger.trace("createAddCloudTransaction(Cloud cloud) out try block");
+
             } catch (SQLException e) {
                 logger.trace("exception");
                 connection.rollback();
@@ -106,8 +106,57 @@ public class DatabaseWrapperTransactionsEntityServiceImpl implements Transaction
     }
 
     @Override
-    public Transaction getTransaction(String transactionId) {
+    public Transaction getTransaction(String transactionId) throws Exception {
+        try (Connection connection = connectionProvider.getConnection();
+             PreparedStatement preparedSELECT_ALL_FROM_WHEREStatement = connection.prepareStatement(SQL_STOCK.SELECT_ALL_FROM_TABLE_WHERE_ID.getSql());
+        ) {
+            try {
+                logger.trace("getTransaction(String transactionId) in try block");
+
+                prepareSELECT_ALL_FROM_WHERE_Statement(preparedSELECT_ALL_FROM_WHEREStatement,
+                        DbTablesDirectory.BASE_TRANSACTION,
+                        "id",
+                        transactionId);
+                ResultSet resultSet = preparedSELECT_ALL_FROM_WHEREStatement.executeQuery();
+                logger.trace("getTransaction(String transactionId) out try block");
+
+            } catch (SQLException e) {
+                logger.trace("exception");
+                connection.rollback();
+                throw e;
+            }
+        }
         return null;
+    }
+
+    public Transaction.TransactionType getTransactionType(String transactionId) throws Exception {
+        Transaction.TransactionType type;
+        logger.trace("getTransactionType (String transactionId) in");
+
+        try (Connection connection = connectionProvider.getConnection();
+//             Statement statement = connection.createStatement();
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_STOCK.GET_TRANSACTION_TYPE.getSql());
+             ){
+            try {
+                logger.trace("getTransactionType (String transactionId) in try block");
+                preparedStatement.setString(1, transactionId);
+                ResultSet resultSet = preparedStatement.executeQuery();
+//                ResultSet resultSet = statement.executeQuery("SELECT                 transaction_type.type              FROM                 base_transaction              INNER JOIN                 transaction_type              ON                 transaction_type.type_id = base_transaction.type             WHERE                 base_transaction.id = 1696696229426");
+                logger.trace("getTransactionType (String transactionId) out try block");
+                type = Transaction.TransactionType.valueOf(resultSet.getString("type"));
+                logger.trace("getTransactionType (String transactionId) out try block");
+            } catch (SQLException e) {
+                logger.trace("exception");
+                throw e;
+            }
+        }
+        return type;
+    }
+
+    private void prepareSELECT_ALL_FROM_WHERE_Statement(PreparedStatement statement, String tableName, String column, String criterion) throws SQLException {
+        statement.setString(1, tableName);
+        statement.setString(2, column);
+        statement.setString(3, criterion);
     }
 
     @Override
