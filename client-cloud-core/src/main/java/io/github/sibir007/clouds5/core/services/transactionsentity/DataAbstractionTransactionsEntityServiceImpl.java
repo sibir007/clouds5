@@ -6,6 +6,8 @@ import io.github.sibir007.clouds5.core.services.spi.TransactionEntityService;
 import io.github.sibir007.clouds5.core.transactions.Transaction;
 import io.github.sibir007.clouds5.core.transactions.response.TransactionResponse;
 
+import java.util.Optional;
+
 // TODO: 01.10.2023 делать реализацию.
 //  а может нет...
 public class DataAbstractionTransactionsEntityServiceImpl implements TransactionEntityService {
@@ -15,7 +17,7 @@ public class DataAbstractionTransactionsEntityServiceImpl implements Transaction
     }
 
     @Override
-    public Transaction getTransaction(String transactionId) {
+    public Optional<Transaction> getTransaction(String transactionId) {
         return null;
     }
 

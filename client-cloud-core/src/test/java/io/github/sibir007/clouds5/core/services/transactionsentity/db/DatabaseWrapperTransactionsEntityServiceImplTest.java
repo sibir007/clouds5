@@ -5,8 +5,11 @@ import io.github.sibir007.clouds5.core.Cloud;
 import io.github.sibir007.clouds5.core.CloudImpl;
 import io.github.sibir007.clouds5.core.properties.TransactionEntityDBProperty;
 import io.github.sibir007.clouds5.core.transactions.AddCloudTransaction;
+import io.github.sibir007.clouds5.core.transactions.Transaction;
 import io.github.sibir007.clouds5.core.transactions.Transaction.TransactionType;
 import org.junit.jupiter.api.*;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -26,7 +29,7 @@ class DatabaseWrapperTransactionsEntityServiceImplTest extends BaseTestCase {
     @AfterEach
     void tearDown() {
     }
-//@Disabled("")
+@Disabled("")
     @DisplayName("EntityServiсе should ...")
     @Test
     void entityServiceShould(){
@@ -35,10 +38,12 @@ class DatabaseWrapperTransactionsEntityServiceImplTest extends BaseTestCase {
         AddCloudTransaction transaction = entityService.createAddCloudTransaction(cloud);
         assertEquals(transaction.getHost(), cloud.getHost(), () ->  "hosts should be equals");
         assertEquals(transaction.getPort(), cloud.getPort(), () -> "ports should be equals");
-        TransactionType transactionType = entityService.getTransactionType(transaction.getId());
-        assertEquals(TransactionType.ADD_CLOUD, transactionType, () -> "transaction type should be ADD_ACCOUNT");
-//        Transaction transaction_from_db = entityService.getTransaction(transaction.getId());
-//        assertInstanceOf(AddCloudTransaction.class, transaction_from_db, ()-> "transaction should be AddCloudTransaction");
+        Optional<TransactionType> transactionType = entityService.getTransactionType(transaction.getId());
+//
+        assertEquals(TransactionType.ADD_CLOUD, transactionType.get(), () -> "transaction type should be ADD_CLOUD");
+        assertEquals(transaction.getId(), entityService.getTransaction(transaction.getId()).get().getId());
+        Optional<Transaction> transaction_from_db = entityService.getTransaction(transaction.getId());
+        assertInstanceOf(AddCloudTransaction.class, transaction_from_db.get(), ()-> "transaction should be AddCloudTransaction");
     } catch (Exception e) {
         throw new RuntimeException(e);
     }

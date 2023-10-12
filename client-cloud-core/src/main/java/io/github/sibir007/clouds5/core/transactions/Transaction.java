@@ -61,7 +61,8 @@ public interface Transaction {
 
     public enum TransactionType implements TransactionsTypes{
         ADD_CLOUD(1),
-        ADD_ACCOUNT(2);
+        ADD_ACCOUNT(2),
+        DEFAULT(3);
         private int dbId;
         private TransactionType(int dbId){
             this.dbId = dbId;

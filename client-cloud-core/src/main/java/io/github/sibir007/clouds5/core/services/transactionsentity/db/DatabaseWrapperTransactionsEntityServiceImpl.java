@@ -3,15 +3,19 @@ package io.github.sibir007.clouds5.core.services.transactionsentity.db;
 import io.github.sibir007.clouds5.core.Cloud;
 import io.github.sibir007.clouds5.core.services.spi.TransactionEntityService;
 import io.github.sibir007.clouds5.core.properties.TransactionEntityDBProperty;
+import io.github.sibir007.clouds5.core.services.transactionsentity.db.spi.GetTransactionForIdService;
+import io.github.sibir007.clouds5.core.services.transactionsentity.db.spi.GetTransactionServiceLoader;
 import io.github.sibir007.clouds5.core.transactions.AddCloudTransaction;
-import io.github.sibir007.clouds5.core.transactions.DbTablesDirectory;
+import io.github.sibir007.clouds5.core.transactions.DbTablesDictionary;
 import io.github.sibir007.clouds5.core.transactions.SQL_STOCK;
 import io.github.sibir007.clouds5.core.transactions.Transaction;
+import io.github.sibir007.clouds5.core.transactions.Transaction.TransactionType;
 import io.github.sibir007.clouds5.core.transactions.response.TransactionResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+import java.util.Optional;
 
 public class DatabaseWrapperTransactionsEntityServiceImpl implements TransactionEntityService {
     private static Logger logger = LogManager.getLogger();
@@ -49,8 +53,6 @@ public class DatabaseWrapperTransactionsEntityServiceImpl implements Transaction
         logger.trace("in createAddCloudTransaction(Cloud cloud)");
         String id = getTransactionId();
         AddCloudTransaction transaction = new AddCloudTransaction(
-                id,
-                id,
                 id,
                 Transaction.Direction.IN,
                 Transaction.Status.NEW,
@@ -105,8 +107,48 @@ public class DatabaseWrapperTransactionsEntityServiceImpl implements Transaction
         return String.valueOf(System.currentTimeMillis());
     }
 
-    @Override
-    public Transaction getTransaction(String transactionId) throws Exception {
+
+    public Optional<Transaction> getTransaction(String transactionId) throws Exception {
+        Optional<Transaction> optionalTransaction = null;
+        Optional<TransactionType> optionalTransactionType = getTransactionType(transactionId);
+        if (optionalTransactionType.isEmpty()){
+            optionalTransaction = Optional.empty();
+            return optionalTransaction;
+        }
+        try (Connection connection = connectionProvider.getConnection();){
+            Optional<GetTransactionForIdService> optionalGetTransactionForIdService = GetTransactionServiceLoader.getTransactionForIdService(optionalTransactionType.get(), connection);
+            if (optionalGetTransactionForIdService.isEmpty()){
+                optionalTransaction = Optional.empty();
+                return optionalTransaction;
+            }
+            optionalTransaction = optionalGetTransactionForIdService.get().getTransaction(transactionId);
+
+//        switch (optionalTransactionType.get()) {
+//            case  (TransactionType.ADD_CLOUD):
+//                optionalTransaction = Optional.of(getAddCloudTransaction(transactionId));
+//                break;
+//            case (TransactionType.ADD_ACCOUNT):
+//                optionalTransaction = Optional.of(getAddAccountTransaction(transactionId));
+//                break;
+//            default:
+//                optionalTransaction = Optional.empty();
+//                break;
+//        }
+//        extracted(transactionId);
+        }
+
+        return optionalTransaction;
+    }
+
+    private Transaction getAddAccountTransaction(String transactionId) {
+        return null;
+    }
+
+    private Transaction getAddCloudTransaction(String transactionId) {
+        return null;
+    }
+
+    private void extracted(String transactionId) throws SQLException {
         try (Connection connection = connectionProvider.getConnection();
              PreparedStatement preparedSELECT_ALL_FROM_WHEREStatement = connection.prepareStatement(SQL_STOCK.SELECT_ALL_FROM_TABLE_WHERE_ID.getSql());
         ) {
@@ -114,7 +156,7 @@ public class DatabaseWrapperTransactionsEntityServiceImpl implements Transaction
                 logger.trace("getTransaction(String transactionId) in try block");
 
                 prepareSELECT_ALL_FROM_WHERE_Statement(preparedSELECT_ALL_FROM_WHEREStatement,
-                        DbTablesDirectory.BASE_TRANSACTION,
+                        DbTablesDictionary.BASE_TRANSACTION,
                         "id",
                         transactionId);
                 ResultSet resultSet = preparedSELECT_ALL_FROM_WHEREStatement.executeQuery();
@@ -126,31 +168,35 @@ public class DatabaseWrapperTransactionsEntityServiceImpl implements Transaction
                 throw e;
             }
         }
-        return null;
     }
 
-    public Transaction.TransactionType getTransactionType(String transactionId) throws Exception {
-        Transaction.TransactionType type;
+    public Optional<TransactionType> getTransactionType(String transactionId) throws Exception {
+        Optional<TransactionType> optionalType;
         logger.trace("getTransactionType (String transactionId) in");
 
         try (Connection connection = connectionProvider.getConnection();
 //             Statement statement = connection.createStatement();
-             PreparedStatement preparedStatement = connection.prepareStatement(SQL_STOCK.GET_TRANSACTION_TYPE.getSql());
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_STOCK.GET_TRANSACTION_TYPE_WHERE_Id.getSql());
              ){
             try {
                 logger.trace("getTransactionType (String transactionId) in try block");
                 preparedStatement.setString(1, transactionId);
                 ResultSet resultSet = preparedStatement.executeQuery();
-//                ResultSet resultSet = statement.executeQuery("SELECT                 transaction_type.type              FROM                 base_transaction              INNER JOIN                 transaction_type              ON                 transaction_type.type_id = base_transaction.type             WHERE                 base_transaction.id = 1696696229426");
                 logger.trace("getTransactionType (String transactionId) out try block");
-                type = Transaction.TransactionType.valueOf(resultSet.getString("type"));
+                String typeInDb = resultSet.getString("type");
+                if (typeInDb == null){
+                    optionalType = Optional.empty();
+                }else {
+                    optionalType = Optional.of(TransactionType.valueOf(typeInDb));
+                }
+
                 logger.trace("getTransactionType (String transactionId) out try block");
             } catch (SQLException e) {
                 logger.trace("exception");
                 throw e;
             }
         }
-        return type;
+        return optionalType;
     }
 
     private void prepareSELECT_ALL_FROM_WHERE_Statement(PreparedStatement statement, String tableName, String column, String criterion) throws SQLException {
@@ -167,24 +213,5 @@ public class DatabaseWrapperTransactionsEntityServiceImpl implements Transaction
     @Override
     public TransactionResponse getTransactionResponse() {
         return null;
-    }
-
-    //fore testing only
-    protected void createNewTable() {
-        // SQL_STOCK statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS warehouses (\n"
-                + "	id integer PRIMARY KEY,\n"
-                + "	name text NOT NULL,\n"
-                + "	capacity real\n"
-                + ");";
-
-        try (Connection conn = connectionProvider.getConnection();
-             Statement stmt = conn.createStatement()) {
-            // create a new table
-            stmt.execute(sql);
-            logger.info("table created");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
     }
 }
